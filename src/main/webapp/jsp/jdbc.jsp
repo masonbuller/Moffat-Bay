@@ -21,6 +21,31 @@
         System.out.println("Connection failed");
     }
     
+    
+    
+ // Create Reservation table
+    try {
+        String sql = "DROP TABLE IF EXISTS Reservation";
+        stmt.executeUpdate(sql);
+    } catch (SQLException e) {
+        System.out.println("Reservation table existence check failed");
+    }
+    
+    try {
+    	String sql = "CREATE TABLE Reservation (ReservationID int NOT NULL AUTO_INCREMENT, Check_In date NOT NULL, Check_Out date NOT NULL, Guest_Amt int NOT NULL, Total_Cost double NOT NULL, CustomerID int NOT NULL, RoomID int NOT NULL, PRIMARY KEY(ReservationID))";
+    	stmt.executeUpdate(sql);
+    } catch (SQLException e) {
+    	System.out.println(e);
+    }
+    
+    try {
+    	String sql = "ALTER TABLE Reservation AUTO_INCREMENT=1000";
+    	stmt.executeUpdate(sql);
+    } catch (SQLException e) {
+    	System.out.println("Alter Reservation table auto increment failed");
+    }
+    
+    
 
     // Create Room Table
     try {
@@ -42,31 +67,6 @@
     	stmt.executeUpdate(sql);
     } catch (SQLException e) {
     	System.out.println("Alter room table auto increment failed");
-    }
-    
-    
-    
-    
- 	// Create Reservation table
-    try {
-        String sql = "DROP TABLE IF EXISTS Reservation";
-        stmt.executeUpdate(sql);
-    } catch (SQLException e) {
-        System.out.println("Reservation table existence check failed");
-    }
-    
-    try {
-    	String sql = "CREATE TABLE Reservation (ReservationID int NOT NULL AUTO_INCREMENT, Check_In date NOT NULL, Check_Out date NOT NULL, Guest_Amt int NOT NULL, Total_Cost double NOT NULL, CustomerID int NOT NULL, RoomID int NOT NULL, PRIMARY KEY(ReservationID))";
-    	stmt.executeUpdate(sql);
-    } catch (SQLException e) {
-    	System.out.println(e);
-    }
-    
-    try {
-    	String sql = "ALTER TABLE Reservation AUTO_INCREMENT=1000";
-    	stmt.executeUpdate(sql);
-    } catch (SQLException e) {
-    	System.out.println("Alter Reservation table auto increment failed");
     }
     
     
