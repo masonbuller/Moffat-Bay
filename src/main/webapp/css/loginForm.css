@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+body{
+	background: #393a3d;
+	padding-top: 20vh;	
+	font-family: "Lexend", serif;
+  	font-optical-sizing: auto;
+  	font-weight: 300;
+  	font-style: normal;
+}
+form{
+    background: #fff;
+}
+.form-container{
+    border-radius: 20px;
+    padding: 50px;
+}
+
+.form-group {
+	padding-bottom: 10px;
+}
+
+.button-group {
+	padding-top: 10px;
+	padding-bottom: 30px;
+}
+
+h1 {
+	font-size: 50px;
+	padding-bottom: 10px;
+}
+
+.btn-outline-success {
+	max-width: 100%;
+	padding: 6px 25px;
+}
