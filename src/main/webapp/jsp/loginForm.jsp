@@ -8,17 +8,19 @@
 	</head>
 	<body>
 	<div class="container">
-		<form action="LoginServlet" method="post">
-			<div class="mb-3">
-				<label class="form-label">Email Address</label>
-				<input type="text" class="form-control" name="email">
-			</div>
-			<div class="mb-3">
-				<label class="form-label">Password</label> 
-				<input type="password" class="form-control" name="password">
-			</div>
-			<button type="submit" class="btn btn-outline-success">Sign In</button>
-		</form>
+		<div class="row vh-100 align-items-center justify-content-center">
+			<form action="LoginServlet" method="post">
+				<div class="mb-3">
+					<label class="form-label">Email Address</label>
+					<input type="text" class="form-control" name="email">
+				</div>
+				<div class="mb-3">
+					<label class="form-label">Password</label> 
+					<input type="password" class="form-control" name="password">
+				</div>
+				<button type="submit" class="btn btn-outline-success">Sign In</button>
+			</form>
+		</div>
 	</div>
 </body>
 </html>
