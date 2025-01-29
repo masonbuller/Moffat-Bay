@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.sql.*"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.sql.*, com.password4j.*;"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,19 +24,7 @@
 
     //Insert data to Room Table
     try {
-    	String sql = "INSERT INTO Room VALUES (001, '2 Queens', '150')";
-    	stmt.executeUpdate(sql);
-    } catch (SQLException e) {
-    	System.out.println("Insert values into Room Table failed");
-    }
-    try {
-    	String sql = "INSERT INTO Room VALUES (002, '1 Queen', '120')";
-    	stmt.executeUpdate(sql);
-    } catch (SQLException e) {
-    	System.out.println("Insert values into Room Table failed");
-    }
-    try {
-    	String sql = "INSERT INTO Room VALUES (003, '1 King', '200')";
+    	String sql = "INSERT INTO Room('Bed_type', 'Cost') VALUES ('Queen', 135), ('Double Full Beds', 120), ('Double Queen Beds', 150), ('King', 160)";
     	stmt.executeUpdate(sql);
     } catch (SQLException e) {
     	System.out.println("Insert values into Room Table failed");
@@ -85,25 +73,14 @@
     }
    
     //Insert data into login table
+    Hash hash = Password.hash("purple23").addRandomSalt(20).withBcrypt();
     try {
-    	String sql = "INSERT INTO Login VALUES ('joemi23@hotmail.com', 'purple23')";
+    	String sql = "INSERT INTO Login VALUES ('joemi23@hotmail.com', 'purple23'), ('hellokitty@gmail.com', 'pinkonpink'), ('emoses@aol.com', 'techclub')";
     	stmt.executeUpdate(sql);
     } catch (SQLException e) {
     	System.out.println("Insert into values login table failed");
     }
-    try {
-    	String sql = "INSERT INTO Login VALUES ('hellokitty@gmail.com', 'pinkonpink')";
-    	stmt.executeUpdate(sql);
-    } catch (SQLException e) {
-    	System.out.println("Insert into values login table failed");
-    }
-    try {
-    	String sql = "INSERT INTO Login VALUES ('emoses@aol.com', 'techclub')";
-    	stmt.executeUpdate(sql);
-    } catch (SQLException e) {
-    	System.out.println("Insert into values login table failed");
-    }
-    
+
     //Insert data into ContactUs table
     try {
     	String sql = "INSERT INTO ContactUs VALUES (1025, 'evensteven@hotmail.com', '555-032-1234', 'Are there scenic views?')";
