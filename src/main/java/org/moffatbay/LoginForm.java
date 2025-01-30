@@ -14,7 +14,7 @@ import org.moffatbay.*;
 /**
  * Servlet implementation class LoginForm
  */
-@WebServlet("/LoginForm")
+@WebServlet("/login")
 public class LoginForm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

@@ -14,7 +14,7 @@
 	<div class="container-fluid">
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-4">
-				<form class="form-container" action="/LoginForm" method="post">
+				<form class="form-container" action="loginForm.jsp" method="post">
 					<div class="form-group">
 						<h1 class="text-center">Moffat Bay</h1>
 					</div>
