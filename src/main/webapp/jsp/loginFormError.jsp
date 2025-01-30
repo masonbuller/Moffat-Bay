@@ -11,6 +11,10 @@
 		<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
 	</head>
 	<body>
+	<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  		<strong>ERROR:</strong> Email or password is incorrect. Please try again.
+  		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
 	<div class="container-fluid">
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-4">
