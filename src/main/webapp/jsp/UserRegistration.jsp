@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Landing Page</title>
+	<title>User Registration</title>
 	<link rel="stylesheet" href="/Moffat-Bay/css/styles.css">
 	
 </head>
@@ -31,15 +31,34 @@
 		</nav>
 	</div>
 </div>
-
 </header>
 
-<main>
-	<div class="showcase">
-		<img src="/Moffat-Bay/images/Moffat_Bay_View.jpg" alt="MoffatBay" width="1600" height="800"/>
-		<div class="text-overlay">Moffat Bay Lodge</div>
-	</div>
-</main>
+<div class="container">
+	<h2>User Registration</h2>
+	<form action="/submit_registration" method="post">
+		<div class="form-group">
+			<label for="firstName">First Name:</label>
+			<input type="text" id="firstName" name="firstName" required>
+		</div>
+		<div class="form-group">
+			<label for="lastName">Last Name:</label>
+			<input type="text" id="lastName" name="lastName" required>
+		</div>
+		<div class="form-group">
+			<label for="phoneNumber">Phone Number:</label>
+			<input type="tel" id="phoneNumber" name="phoneNumber" required>
+		</div>
+		<div class="form-group">
+			<label for="email">Email Address:</label>
+			<input type="email" id="email" name="email" required>
+		</div>
+		<div class="form-group">
+			<label for="password">Password:</label>
+			<input type="password" id="password" name="password" required>
+		</div>
+		<button type="submit">Register</button>
+	</form>
+</div>
 
 
 </body>
