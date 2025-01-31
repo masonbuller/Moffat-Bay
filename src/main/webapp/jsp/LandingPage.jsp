@@ -25,8 +25,8 @@
 				<li><a href="#">About Us</a></li>
 				<li><a href="#">Contact Us</a></li>
 				<li><a href="#">Book Reservation</a></li>
-				<li><a href="http://localhost:8080/Moffat-Bay/jsp/UserRegistration.jsp">User Registration</a></li>
-				<li><a href="http://localhost:8080/Moffat-Bay/jsp/loginForm.jsp">Login</a></li>
+				<li><a href="/Moffat-Bay/jsp/UserRegistration.jsp">User Registration</a></li>
+				<li><a href="/Moffat-Bay/jsp/loginForm.jsp">Login</a></li>
 			</ul>
 		</nav>
 	</div>

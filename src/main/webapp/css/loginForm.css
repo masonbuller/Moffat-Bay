@@ -42,9 +42,11 @@ form{
 h1 {
 	font-size: 50px;
 	padding-bottom: 10px;
+	padding-top: 20px;
 }
 
 .btn-outline-success {
 	max-width: 100%;
 	padding: 6px 25px;
 }
+

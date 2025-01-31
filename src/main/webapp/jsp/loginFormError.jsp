@@ -19,6 +19,9 @@
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-4">
 				<form class="form-container" action="/Moffat-Bay/login" method="post">
+					<div class="text-center">
+						<img src="/Moffat-Bay/images/black-anchor.png" width="150">
+					</div>
 					<div class="form-group">
 						<h1 class="text-center">Moffat Bay</h1>
 					</div>
