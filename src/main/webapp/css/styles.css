@@ -76,8 +76,8 @@ header h2{
 	object-fit: cover;
 }
 
-.text-overlay{
-	position: absolute;
+.style{
+	text-align: center;
 	top: 25px;
 	left: 50px;
 	transform: translate(-50px, -50px);
