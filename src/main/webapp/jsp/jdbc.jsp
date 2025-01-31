@@ -56,7 +56,7 @@
     }
     
     try {
-    	String sql = "CREATE TABLE Room (RoomID int NOT NULL AUTO_INCREMENT, Bed_type varchar(20) NOT NULL, Cost int NOT NULL, PRIMARY KEY(RoomID));";
+    	String sql = "CREATE TABLE Room (RoomID int NOT NULL AUTO_INCREMENT, Bed_type varchar(20) NOT NULL, Cost double NOT NULL, PRIMARY KEY(RoomID));";
     	stmt.executeUpdate(sql);
     } catch (SQLException e){
     	System.out.println("Create Room table failed");
@@ -80,7 +80,7 @@
     }
     
     try {
-    	String sql = "CREATE TABLE Registration (CustomerID int NOT NULL AUTO_INCREMENT, FirstName varchar(50) NOT NULL, LastName varchar(50) NOT NULL, PhoneNumber varchar(12) NOT NULL, Email varchar(60) NOT NULL, Password varchar(20) NOT NULL, PRIMARY KEY(CustomerID))";
+    	String sql = "CREATE TABLE Registration (CustomerID int NOT NULL AUTO_INCREMENT, FirstName varchar(50) NOT NULL, LastName varchar(50) NOT NULL, PhoneNumber varchar(20) NOT NULL, Email varchar(60) NOT NULL, Password varchar(20) NOT NULL, PRIMARY KEY(CustomerID))";
     	stmt.executeUpdate(sql);
     	
     } catch (SQLException e) {
@@ -105,7 +105,7 @@
     }
     
     try {
-    	String sql = "CREATE TABLE Login (Email varchar(60) NOT NULL, Password varchar(20) NOT NULL, PRIMARY KEY(Email))";
+    	String sql = "CREATE TABLE Login (Email varchar(60) NOT NULL, Password varchar(60) NOT NULL, PRIMARY KEY(Email))";
     	stmt.executeUpdate(sql);
     	
     } catch (SQLException e) {

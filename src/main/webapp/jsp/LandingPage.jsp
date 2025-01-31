@@ -9,9 +9,7 @@
 	
 </head>
 <body>
-
 <jsp:include page="index.jsp" flush="true"/>
-
 <main>
 	<div class="showcase">
 		<img src="/Moffat-Bay/images/Moffat_Bay_View.jpg" alt="MoffatBay" width="1600" height="800"/>
