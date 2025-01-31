@@ -16,24 +16,24 @@
 			<section class="col-12 col-sm-6 col-md-4">
 				<form class="form-container" action="/Moffat-Bay/login" method="post">
 					<div class="text-center">
-						<img src="/Moffat-Bay/images/black-anchor.png" width="150">
+						<img src="/Moffat-Bay/images/black_anchor.png" width="150">
 					</div>
 					<div class="form-group">
 						<h1 class="text-center">Moffat Bay</h1>
 					</div>
 					<div class="form-group">
 						<label class="form-label font-weight-bold">Email Address</label>
-						<input type="text" class="form-control" name="email" required>
+						<input type="text" class="form-control" name="email" pattern="^(?=.{1,60}$)[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" oninvalid="this.setCustomValidity('Please match the format example@domain.com')" oninput="this.setCustomValidity('')" required>
 					</div>
 					<div class="form-group">
 						<label class="form-label font-weight-bold">Password</label> 
-						<input type="password" class="form-control" name="password" required>
+						<input type="password" class="form-control" name="password" pattern=".{8,20}" oninvalid="this.setCustomValidity('Please enter 8-20 characters.')" oninput="this.setCustomValidity('')"required>
 					</div>
 					<div class="button-group">
 						<button type="submit" class="btn btn-outline-success">Sign In</button>
 					</div>
 					<div class="form-footer">
-          				<p> Don't have an account? <a href="#">Sign Up</a></p>
+          				<p> Don't have an account? <a href="/Moffat-Bay/jsp/UserRegistration.jsp">Sign Up</a></p>
         			</div>
 				</form>
 			</section>

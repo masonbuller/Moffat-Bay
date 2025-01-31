@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.*;
 import org.moffatbay.*;
+import com.password4j.*;
 
 /**
  * Servlet implementation class LoginForm
@@ -32,13 +33,18 @@ public class LoginForm extends HttpServlet {
 		
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");
-		// Hash hash = Password.hash(password).addRandomSalt(20).withBcrypt();
 		try {
-			ResultSet rs = SQLStatements.checkLogin(email, password);
+			ResultSet rs = SQLStatements.checkLogin(email);
 			if (!rs.next()) {
 				resp.sendRedirect("jsp/loginFormError.jsp");
 			} else {
-				resp.sendRedirect("jsp/LandingPage.jsp");
+				String passwordData = rs.getString("password");
+				boolean verification = Password.check(password, passwordData).withBcrypt();
+				if (verification) {
+					resp.sendRedirect("jsp/LandingPage.jsp");
+				} else {
+					resp.sendRedirect("jsp/loginFormError.jsp");
+				}
 			} 
 		} catch (SQLException e) {
 			System.out.println(e);

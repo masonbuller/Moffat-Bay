@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.sql.*"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.sql.*, com.password4j.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,9 +31,20 @@
     }
     
 	//Insert data into login table
+	String password1 = "purple23";
+	String password2 = "pinkonpink";
+	String password3 = "techclub";
+	
+    Hash hash1 = Password.hash(password1).withBcrypt();
+    Hash hash2 = Password.hash(password2).withBcrypt();
+    Hash hash3 = Password.hash(password3).withBcrypt();
     
+    password1 = hash1.getResult();
+    password2 = hash2.getResult();
+    password3 = hash3.getResult();
+	
     try {
-    	String sql = "INSERT INTO Login VALUES ('joemi23@hotmail.com', 'purple23'), ('hellokitty@gmail.com', 'pinkonpink'), ('emoses@aol.com', 'techclub')";
+    	String sql = "INSERT INTO Login VALUES ('joemi23@hotmail.com', '" + password1 + "'), ('hellokitty@gmail.com', '" + password2 + "'), ('emoses@aol.com', '" + password3 + "')";
     	stmt.executeUpdate(sql);
     } catch (SQLException e) {
     	System.out.println(e);
