@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.sql.*, com.password4j.*;"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,7 +73,6 @@
     }
    
     //Insert data into login table
-    Hash hash = Password.hash("purple23").addRandomSalt(20).withBcrypt();
     try {
     	String sql = "INSERT INTO Login VALUES ('joemi23@hotmail.com', 'purple23'), ('hellokitty@gmail.com', 'pinkonpink'), ('emoses@aol.com', 'techclub')";
     	stmt.executeUpdate(sql);
