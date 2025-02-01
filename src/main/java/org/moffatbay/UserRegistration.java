@@ -6,6 +6,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import com.password4j.*;
 
 /**
  * Servlet implementation class UserRegistration
@@ -25,9 +28,29 @@ public class UserRegistration extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String email = req.getParameter("email");
+		try {
+			ResultSet rs = SQLStatements.checkLogin(email);
+			if (rs.next()) {
+				resp.sendRedirect("jsp/UserRegistration/UserRegistrationError.jsp");
+			} else {
+				String firstName = req.getParameter("firstName");
+				String lastName = req.getParameter("lastName");
+				String phone = req.getParameter("phone");
+				String password = req.getParameter("password");
+				Hash hash = Password.hash(password).withBcrypt();
+				String hashed = hash.getResult();
+				SQLStatements.registerLogin(email, hashed);
+				SQLStatements.registerUser(firstName, lastName, phone, email, hashed);
+				resp.sendRedirect("jsp/Login/RegisterSuccessLogin.jsp");
+			} 
+		} catch (SQLException e) {
+			System.out.println(e);
+			resp.sendRedirect("jsp/UserRegistration/UserRegistrationError.jsp");
+		} catch (ClassNotFoundException e) {
+			System.out.println(e);
+		}
 	}
 
 	/**
