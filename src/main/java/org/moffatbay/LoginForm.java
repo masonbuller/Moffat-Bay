@@ -36,14 +36,14 @@ public class LoginForm extends HttpServlet {
 		try {
 			ResultSet rs = SQLStatements.checkLogin(email);
 			if (!rs.next()) {
-				resp.sendRedirect("jsp/loginFormError.jsp");
+				resp.sendRedirect("jsp/Login/loginFormError.jsp");
 			} else {
 				String passwordData = rs.getString("password");
 				boolean verification = Password.check(password, passwordData).withBcrypt();
 				if (verification) {
-					resp.sendRedirect("jsp/LandingPage.jsp");
+					resp.sendRedirect("jsp/Landing/LandingPage.jsp");
 				} else {
-					resp.sendRedirect("jsp/loginFormError.jsp");
+					resp.sendRedirect("jsp/Login/loginFormError.jsp");
 				}
 			} 
 		} catch (SQLException e) {

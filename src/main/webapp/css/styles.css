@@ -3,7 +3,8 @@
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
-	font-family: Arial, sans-serif;
+	font-family: "Lexend", serif;
+  	font-optical-sizing: auto;
 }
 
 :root{

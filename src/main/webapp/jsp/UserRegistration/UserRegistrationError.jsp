@@ -1,16 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>User Registration</title>
-	<link rel="stylesheet" href="/Moffat-Bay/css/styles.css">
-	
-</head>
-<body>
-
-<jsp:include page="index.jsp" flush="true"/>
 	<head>
     	<title>Registration Form</title>
     	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -21,6 +11,10 @@
 		<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
 	</head>
 	<body>
+	<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  		<strong>ERROR:</strong> Could not register you. Please try again.
+  		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
 	<div class="container-fluid">
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-4">
@@ -55,7 +49,7 @@
 						<button type="submit" class="btn btn-outline-success">Register</button>
 					</div>
 					<div class="form-footer">
-          				<p> Already have an account? <a href="/Moffat-Bay/jsp/loginForm.jsp">Sign In</a></p>
+          				<p> Already have an account? <a href="/Moffat-Bay/jsp/Login/loginForm.jsp">Sign In</a></p>
         			</div>
 				</form>
 			</section>
