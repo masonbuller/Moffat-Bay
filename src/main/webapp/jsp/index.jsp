@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Navbar</title>
-	<link rel="stylesheet" href="/Moffat-Bay/css/styles.css">
+	<link rel="stylesheet" href="/Moffat-Bay/css/index.css">
     	
 </head>
 <body>
@@ -13,7 +13,7 @@
 <div class="container">
 	<div class="navbar">
 		<div class="logo">
-			<img alt="logo" src="/Moffat-Bay/images/black-anchor.png" width="50px" height="50px">
+			<img alt="logo" src="/Moffat-Bay/images/black_anchor.png" width="50px" height="50px">
 			<h2>Moffat Bay Lodge</h2>
 		</div>
 		<nav>

@@ -6,10 +6,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Landing Page</title>
 	<link rel="stylesheet" href="/Moffat-Bay/css/styles.css">
-	
+	<jsp:include page="index.jsp" flush="true"/>
 </head>
 <body>
-<jsp:include page="index.jsp" flush="true"/>
+
 <main>
 	<div class="showcase">
 		<img src="/Moffat-Bay/images/Moffat_Bay_View.jpg" alt="MoffatBay" width="1600" height="800"/>
