@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Navbar</title>
-	<link rel="stylesheet" href="/Moffat-Bay/css/styles.css">
+	<link rel="stylesheet" href="/Moffat-Bay/css/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
@@ -20,7 +20,7 @@
 		</div>
 		<nav>
 			<ul>
-				<li><a href="//localhost:8080/Moffat-Bay/jsp/LandingPage.jsp">Home</a></li>
+				<li><a href="/Moffat-Bay/jsp/Landing/LandingPage.jsp">Home</a></li>
 				<li><a href="#">Amenities</a></li>
 				<li><a href="#">About Us</a></li>
 				<li><a href="#">Book Reservation</a></li>

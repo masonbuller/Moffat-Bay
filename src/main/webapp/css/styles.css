@@ -1,36 +1,14 @@
 @charset "UTF-8";
-* {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
-	font-family: "Lexend", serif;
-  	font-optical-sizing: auto;
-}
-
-:root{
-	--primary_bg: white;
-	--color: black;
-}
-
-body {
-	background: var(--primary_bg);
-}
 
 .container{
 	max-width: 1440px;
 	width: 100%;
 	margin: 0 auto;
 	padding: 0 2rem;
-}
-
-header {
-	padding: 15px 0;
-	box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
-}
-
-.logo{
-	display: flex;
-	align-items: center;
+	font-family: "Lexend", serif;
+  	font-optical-sizing: auto;
+  	font-weight: 300;
+  	font-style: normal;
 }
 
 header h2{
@@ -38,27 +16,6 @@ header h2{
 	font-size: 30px;
 	font-weight: 600;
 	color: var(--color);
-}
-
-.navbar{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.navbar ul{
-  display: flex;
-  align-items: center;
-  list-style: none;
-}
-
-.navbar ul li{
-  margin: 0 1.2rem; 
-}
-
-.navbar ul li a{
-  text-decoration: none; 
-  color: green;
 }
 
 .showcase{
@@ -86,38 +43,4 @@ header h2{
 	font-weight: bold;
 	font-size: 60px;
 	font: Arial;
-}
-
-.form-group{
-	margin-bottom: 15px;
-	position: absolute;
-	top: 75px;
-	left: 50px;
-}
-
-label{
-	display: block;
-	margin-bottom: 5px;
-}
-
-input{
-	width: 100%;
-	padding: 8px;
-	box-sizing: border-box;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-}
-
-button{
-	width: 100%;
-	padding: 10px;
-	background-color: #28a745;
-	color: #fff;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-}
-
-button:hover{
-	background-color: #218838;
 }
