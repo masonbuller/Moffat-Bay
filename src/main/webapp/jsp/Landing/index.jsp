@@ -11,19 +11,19 @@
 	<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-<header>
+
 <div class="container">
 	<div class="navbar">
+		<nav>
 		<div class="logo">
+			<ul>
 			<img alt="logo" src="/Moffat-Bay/images/black_anchor.png" width="50px" height="50px">
 			<h2>Moffat Bay Lodge</h2>
-		</div>
-		<nav>
-			<ul>
+	
 				<li><a href="/Moffat-Bay/jsp/Landing/LandingPage.jsp">Home</a></li>
 				<li><a href="#">Amenities</a></li>
 				<li><a href="#">About Us</a></li>
-				<li><a href="#">Book Reservation</a></li>
+				<li><a href="/Moffat-Bay/jsp/BookReservation.jsp">Book Reservation</a></li>
 				<li><a href="#">Reservation Summary</a></li>
 				<li><a href="/Moffat-Bay/jsp/UserRegistration/UserRegistration.jsp">User Registration</a></li>
 				<li><a href="/Moffat-Bay/jsp/Login/loginForm.jsp">Login</a></li>
@@ -32,6 +32,6 @@
 	</div>
 </div>
 
-</header>
+
 </body>
 </html>
