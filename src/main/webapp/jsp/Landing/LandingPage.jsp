@@ -9,9 +9,9 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+	<jsp:include page="index.jsp" flush="true"/>
 </head>
 <body>
-<jsp:include page="index.jsp" flush="true"/>
 <main>
 	<div class="showcase">
 		<img src="/Moffat-Bay/images/Moffat_Bay_View.jpg" alt="MoffatBay" width="1600" height="800"/>
