@@ -1,5 +1,14 @@
 @charset "UTF-8";
 
+.alert {
+    position:fixed; 
+    top: 0px; 
+    left: 0px; 
+    width: 100%;
+    z-index:9999; 
+    border-radius:0px
+}
+
 body{
 	background: url(/Moffat-Bay/images/Moffat_Bay_View.jpg) no-repeat;
 	background-position: center center;
