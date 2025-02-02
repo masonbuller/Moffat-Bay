@@ -54,19 +54,19 @@
     
   //Insert data into registration table
     try {
-    	String sql = "INSERT INTO Registration(FirstName, LastName, PhoneNumber, Email, Password) VALUES ('Joseph', 'Miller', '555-433-9020', 'joemi23@hotmail.com', 'purple23')";
+    	String sql = "INSERT INTO Registration(FirstName, LastName, PhoneNumber, Email, Password) VALUES ('Joseph', 'Miller', '555-433-9020', 'joemi23@hotmail.com', '" + password1 + "')";
     	stmt.executeUpdate(sql);
     } catch (SQLException e) {
     	System.out.println(e);
     }
     try {
-    	String sql = "INSERT INTO Registration(FirstName, LastName, PhoneNumber, Email, Password) VALUES ('Ana', 'Frank', '555-323-2099', 'hellokitty@gmail.com', 'pinkonpink')";
+    	String sql = "INSERT INTO Registration(FirstName, LastName, PhoneNumber, Email, Password) VALUES ('Ana', 'Frank', '555-323-2099', 'hellokitty@gmail.com', '" + password2 + "')";
     	stmt.executeUpdate(sql);
     } catch (SQLException e) {
     	System.out.println(e);
     }
     try {
-    	String sql = "INSERT INTO Registration(FirstName, LastName, PhoneNumber, Email, Password) VALUES ('Elizabeth', 'Moses', '555-549-0456', 'emoses@aol.com', 'techclub')";
+    	String sql = "INSERT INTO Registration(FirstName, LastName, PhoneNumber, Email, Password) VALUES ('Elizabeth', 'Moses', '555-549-0456', 'emoses@aol.com', '" + password3 + "')";
     	stmt.executeUpdate(sql);
     } catch (SQLException e) {
     	System.out.println(e);

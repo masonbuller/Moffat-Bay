@@ -35,8 +35,8 @@ public class UserRegistration extends HttpServlet {
 			if (rs.next()) {
 				resp.sendRedirect("jsp/UserRegistration/UserRegistrationError.jsp");
 			} else {
-				String firstName = req.getParameter("firstName");
-				String lastName = req.getParameter("lastName");
+				String firstName = req.getParameter("firstname");
+				String lastName = req.getParameter("lastname");
 				String phone = req.getParameter("phone");
 				String password = req.getParameter("password");
 				Hash hash = Password.hash(password).withBcrypt();
