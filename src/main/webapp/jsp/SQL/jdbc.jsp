@@ -32,7 +32,7 @@
     }
     
     try {
-    	String sql = "CREATE TABLE Reservation (ReservationID int NOT NULL AUTO_INCREMENT, Check_In date NOT NULL, Check_Out date NOT NULL, Guest_Amt int NOT NULL, Total_Cost double NOT NULL, CustomerID int NOT NULL, RoomID int NOT NULL, PRIMARY KEY(ReservationID))";
+    	String sql = "CREATE TABLE Reservation (ReservationID int NOT NULL AUTO_INCREMENT, Check_In date NOT NULL, Check_Out date NOT NULL, Guest_Amt int NOT NULL, Subtotal double NOT NULL, Total_Cost double NOT NULL, CustomerID int NOT NULL, RoomID int NOT NULL, PRIMARY KEY(ReservationID))";
     	stmt.executeUpdate(sql);
     } catch (SQLException e) {
     	System.out.println(e);

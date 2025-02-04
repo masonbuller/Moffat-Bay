@@ -5,6 +5,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.sql.*;
 import org.moffatbay.*;
@@ -41,6 +43,8 @@ public class LoginForm extends HttpServlet {
 				String passwordData = rs.getString("password");
 				boolean verification = Password.check(password, passwordData).withBcrypt();
 				if (verification) {
+					HttpSession session = req.getSession();
+					session.setAttribute("email", email);
 					resp.sendRedirect("jsp/Landing/LandingPage.jsp");
 				} else {
 					resp.sendRedirect("jsp/Login/loginFormError.jsp");

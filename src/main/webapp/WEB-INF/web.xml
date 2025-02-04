@@ -9,4 +9,5 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  <session-config>30</session-config>
 </web-app>

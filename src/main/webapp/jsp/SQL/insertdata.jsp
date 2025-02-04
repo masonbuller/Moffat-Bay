@@ -75,7 +75,7 @@
     //Insert data into reservation table
 
     try {
-    	String sql = "INSERT INTO Reservation(Check_In, Check_Out, Guest_Amt, Total_Cost, CustomerID, RoomID) VALUES ('2025-04-06', '2025-04-11', 4, 758.06, 4000, 001), ('2025-06-15', '2025-06-20', 2, 674.1, 4001, 002), ('2025-09-23', '2025-09-30', 2, 1179.23, 4002, 003)";
+    	String sql = "INSERT INTO Reservation(Check_In, Check_Out, Guest_Amt, Total_Cost, CustomerID, RoomID) VALUES ('2025-04-06', '2025-04-11', 4, 708.75, 758.36, 4000, 001), ('2025-06-15', '2025-06-20', 2, 630, 674.1, 4001, 002), ('2025-09-23', '2025-09-30', 2, 1102.5, 1179.67, 4002, 003)";
     	stmt.executeUpdate(sql);
     } catch (SQLException e) {
     	System.out.println(e);
