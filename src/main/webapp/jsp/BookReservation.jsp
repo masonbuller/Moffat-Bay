@@ -27,7 +27,7 @@
 						<input type="date" class="form-control" name="start-date" required>
 					</div>
 					<div class="form-group">
-						<label class="form-label font-weight-bold">Select End Date</label>
+					<label class="form-label font-weight-bold">Select End Date</label>
 						<input type="date" class="form-control" name="end-date" required>
 					</div>
 					<div class="form-group">
