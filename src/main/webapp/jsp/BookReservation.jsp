@@ -15,7 +15,7 @@
 	<div class="container-fluid">
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-4">
-				<form class="form-container" action="/Moffat-Bay/registration" method="post">
+				<form class="form-container" action="/Moffat-Bay/reservation" method="post">
 					<div class="text-center">
 						<img src="/Moffat-Bay/images/black_anchor.png" width="150">
 					</div>
@@ -24,15 +24,15 @@
 					</div>
 					<div class="form-group">
 						<label class="form-label font-weight-bold">Select Start Date</label>
-						<input type="date" class="form-control" name="start-date" required>
+						<input type="date" class="form-control" name="checkin" required>
 					</div>
 					<div class="form-group">
-					<label class="form-label font-weight-bold">Select End Date</label>
-						<input type="date" class="form-control" name="end-date" required>
+						<label class="form-label font-weight-bold">Select End Date</label>
+						<input type="date" class="form-control" name="checkout" required>
 					</div>
 					<div class="form-group">
 						<label class="form-label font-weight-bold">Guests</label>
-						<input type="number" class="form-control" name="quantity" required>
+						<input type="number" class="form-control" name="guestamt" min="1" required>
 					</div>
 					<div class="form-group">
 						<label class="form-label font-weight-bold">Room Type</label>
@@ -43,7 +43,7 @@
 							</select>
 					</div>
 					<div class="button-group">
-						<button type="submit" class="btn btn-outline-success">Submit</button>
+						<button type="submit" class="btn btn-outline-success">Book Room</button>
 					</div>
 					<div class="form-footer">
           				<p> Already have an account? <a href="/Moffat-Bay/jsp/Login/loginForm.jsp">Sign In</a></p>
