@@ -12,9 +12,6 @@
 		<jsp:include page="/jsp/Landing/index.jsp" flush="true"/>
 	</head>
 	<body>
-	<%
-		HttpSession mysession = request.getSession();
-	%>
 	<div class="container-fluid">
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-4">
@@ -30,28 +27,28 @@
 					</div>
 					<div class="form-group">
 						<label class="form-label">Dates </label><br>
-						<label class="value">Tuesday, February 2, 2025 - Friday, February 5, 2025</label>
+						<label class="value"><%= session.getAttribute("date") %></label>
 					</div>
 					<div class="form-group">
 						<label class="form-label">Room </label><br>
-						<label class="value">King</label>
+						<label class="value"><%= session.getAttribute("date") %></label>
 					</div>
 					<div class="form-group">
 						<label class="form-label">Guests </label><br>
-						<label class="value">2</label>
+						<label class="value"><%= session.getAttribute("date") %></label>
 					</div>
 					<div class="form-group" id="cost">
 						<div class="text-muted">
 							<label class="form-label">Subtotal</label>
-							<label class="valueTotal">$200</label>
+							<label class="valueTotal"><%= session.getAttribute("date") %></label>
 						</div>
 						<div class="text-muted">
 							<label class="form-label">Tax</label>
-							<label class="valueTotal">$29.12</label>
+							<label class="valueTotal"><%= session.getAttribute("date") %></label>
 						</div>
 						<div class="total_label">
 							<label class="form-label">TOTAL</label>
-							<label class="valueTotal">$229.12</label>
+							<label class="valueTotal"><%= session.getAttribute("date") %></label>
 						</div>
 					</div>
 					<div class="button-group">

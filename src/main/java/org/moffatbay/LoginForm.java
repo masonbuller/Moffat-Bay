@@ -32,7 +32,7 @@ public class LoginForm extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		HttpSession session = req.getSession();
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");
 		try {
@@ -43,7 +43,6 @@ public class LoginForm extends HttpServlet {
 				String passwordData = rs.getString("password");
 				boolean verification = Password.check(password, passwordData).withBcrypt();
 				if (verification) {
-					HttpSession session = req.getSession();
 					session.setAttribute("email", email);
 					resp.sendRedirect("jsp/Landing/LandingPage.jsp");
 				} else {
