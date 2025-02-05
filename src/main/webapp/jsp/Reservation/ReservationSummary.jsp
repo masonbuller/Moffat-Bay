@@ -15,7 +15,7 @@
 	<div class="container-fluid">
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-4">
-				<form class="form-container" action="*" method="post">
+				<form class="form-container" action="/Moffat-Bay/reservationSummary" method="post">
 					<div class="text-center">
 						<img src="/Moffat-Bay/images/black_anchor.png" width="150">
 					</div>
@@ -27,28 +27,28 @@
 					</div>
 					<div class="form-group">
 						<label class="form-label">Dates </label><br>
-						<label class="value"><%= session.getAttribute("date") %></label>
+						<label class="value"><%= session.getAttribute("dateFormat") %></label>
 					</div>
 					<div class="form-group">
 						<label class="form-label">Room </label><br>
-						<label class="value"><%= session.getAttribute("date") %></label>
+						<label class="value"><%= session.getAttribute("room_type") %></label>
 					</div>
 					<div class="form-group">
 						<label class="form-label">Guests </label><br>
-						<label class="value"><%= session.getAttribute("date") %></label>
+						<label class="value"><%= session.getAttribute("guests") %></label>
 					</div>
 					<div class="form-group" id="cost">
 						<div class="text-muted">
 							<label class="form-label">Subtotal</label>
-							<label class="valueTotal"><%= session.getAttribute("date") %></label>
+							<label class="valueTotal"><%= session.getAttribute("subtotalF") %></label>
 						</div>
 						<div class="text-muted">
 							<label class="form-label">Tax</label>
-							<label class="valueTotal"><%= session.getAttribute("date") %></label>
+							<label class="valueTotal"><%= session.getAttribute("taxF") %></label>
 						</div>
 						<div class="total_label">
 							<label class="form-label">TOTAL</label>
-							<label class="valueTotal"><%= session.getAttribute("date") %></label>
+							<label class="valueTotal"><%= session.getAttribute("totalF") %></label>
 						</div>
 					</div>
 					<div class="button-group">

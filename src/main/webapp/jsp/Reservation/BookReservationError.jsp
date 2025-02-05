@@ -14,20 +14,25 @@
 	<body>
 	<%
 		HttpSession mysession = request.getSession(false);
-		if (session.getAttribute("errorMessage") != null) {
-			mysession.setAttribute("message", "Unable to make reservation.");
+		if (mysession == null) {
+			mysession.setAttribute("message", "Please login before making a reservation");
+		} else if (session.getAttribute("errorMessage") == "BookingError") {
+			mysession.setAttribute("message", "Unable to make reservation");
+		} else if (session.getAttribute("errorMessage") == "ExistingReservation") {
+			mysession.setAttribute("message", "Existing reservation. Please call customer support for assistance with making multiple reservations");
 		} else {
-			mysession.setAttribute("message", "Please login before making a reservation.");
+			mysession.setAttribute("message", "Debugging check code");
 		}
 	%>
 	<div class="alert alert-danger alert-dismissible fade show" role="alert">
   		<strong>ERROR:</strong> <%= session.getAttribute("message") %>
   		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 	</div>
+	<%= session.removeAttribute("errorMessage") %>
 	<div class="container-fluid">
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-4">
-				<form class="form-container" action="/Moffat-Bay/login" method="post">
+				<form class="form-container" action="/Moffat-Bay/reservation" method="post">
 					<div class="text-center">
 						<img src="/Moffat-Bay/images/black_anchor.png" width="150">
 					</div>
@@ -35,18 +40,32 @@
 						<h1 class="text-center">Moffat Bay</h1>
 					</div>
 					<div class="form-group">
-						<label class="form-label font-weight-bold">Email Address</label>
-						<input type="text" class="form-control" name="email" pattern="^(?=.{1,100}$)[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" oninvalid="this.setCustomValidity('Please match the format example@domain.com')" oninput="this.setCustomValidity('')" required>
+						<label class="form-label font-weight-bold">Select Start Date</label>
+						<input type="date" class="form-control" name="checkin" required>
 					</div>
 					<div class="form-group">
-						<label class="form-label font-weight-bold">Password</label> 
-						<input type="password" class="form-control" name="password" pattern=".{8,20}" oninvalid="this.setCustomValidity('Please enter 8-20 characters.')" oninput="this.setCustomValidity('')"required>
+						<label class="form-label font-weight-bold">Select End Date</label>
+						<input type="date" class="form-control" name="checkout" required>
 					</div>
+					<div class="form-group">
+						<label class="form-label font-weight-bold">Guests</label>
+						<input type="number" class="form-control" name="guestamt" min="1" required>
+					</div>
+					<div class="form-group">
+						<label class="form-label font-weight-bold">Room Type</label>
+							<select name="room_type" id="room_type" required>
+								<option value="1 King Bed">1 King Bed</option>
+								<option value="1 Queen Bed">1 Queen Bed</option>
+								<option value="2 Queen Beds">2 Queen Beds</option>
+								<option value="2 Full Beds">2 Full Beds</option>
+							</select>
+					</div>
+					
 					<div class="button-group">
-						<button type="submit" class="btn btn-outline-success">Sign In</button>
+						<button type="submit" class="btn btn-outline-success">Book Room</button>
 					</div>
 					<div class="form-footer">
-          				<p> Don't have an account? <a href="/Moffat-Bay/jsp/UserRegistration/UserRegistration.jsp">Sign Up</a></p>
+          				<p> Already have an account? <a href="/Moffat-Bay/jsp/Login/loginForm.jsp">Sign In</a></p>
         			</div>
 				</form>
 			</section>

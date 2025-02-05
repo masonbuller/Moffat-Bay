@@ -10,23 +10,20 @@ public class SQLStatements implements Serializable{
     static Statement statement = null;
     static ResultSet resultSet = null;
     
-	public static ResultSet getResultSet(String SQL) throws ClassNotFoundException, SQLException {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/MoffatBay","root","Summertime250!");
-            statement = connection.createStatement();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-
-        try {
-            resultSet = statement.executeQuery(SQL);
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-
-        return resultSet;
-    }
+	public static ResultSet checkReservation(int customerID) {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/MoffatBay","root","Summertime250!");
+			PreparedStatement statement = connection.prepareStatement("SELECT CustomerID from Reservation WHERE customerID = ?");
+			statement.setInt(1, customerID);
+		} catch (SQLException e){
+			System.out.println(e);
+		} catch (ClassNotFoundException e) {
+			System.out.println(e);
+		}
+		
+		return resultSet;
+	}
 	
 	public static ResultSet checkLogin(String email) throws ClassNotFoundException, SQLException {
 		try {
@@ -77,15 +74,19 @@ public class SQLStatements implements Serializable{
 		}
 	}
 	
-	public static void bookReservation(String check_in, String check_out, String guest_amt, String total_cost, String email, String password) {
+	public static void bookReservation(String check_in, String check_out, int guest_amt, double subtotal, double tax, double total, int customerID, int roomID) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 	        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/MoffatBay","root","Summertime250!");
-	        PreparedStatement statement = connection.prepareStatement("INSERT INTO Reservation(Check_In, Check_Out, Guest_Amt, Total_Cost) VALUES(?, ?, ?, ?)");
+	        PreparedStatement statement = connection.prepareStatement("INSERT INTO Reservation(Check_In, Check_Out, Guest_Amt, Subtotal, Tax, Total, CustomerID, RoomID) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
 	        statement.setString(1, check_in);
 	        statement.setString(2, check_out);
-	        statement.setString(3, guest_amt);
-	        statement.setString(3, total_cost);
+	        statement.setInt(3, guest_amt);
+	        statement.setDouble(4, subtotal);
+	        statement.setDouble(5, tax);
+	        statement.setDouble(6, total);
+	        statement.setInt(7, customerID);
+	        statement.setInt(8, roomID);
 	        statement.executeUpdate();
 		} catch (SQLException e){
 			System.out.println(e);
