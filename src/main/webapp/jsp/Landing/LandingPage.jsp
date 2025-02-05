@@ -14,6 +14,23 @@
 		<jsp:include page="index.jsp" flush="true"/>
 </head>
 <body>
+<%
+		HttpSession mysession = request.getSession(false);
+		if (session.getAttribute("landingMessage") != null) {
+			if (session.getAttribute("landingMessage") == "loginSuccess") {
+				mysession.setAttribute("message", "Successfully logged in");
+			} else if (session.getAttribute("landingMessage") == "bookingSuccess") {
+				mysession.setAttribute("message", "Reservation booked successfully");
+			} %>
+			<div class="alert alert-success alert-dismissible fade show" role="alert">
+  				<strong>Success!</strong> <%= session.getAttribute("message") %>
+  				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+	<%
+		}
+		
+		session.removeAttribute("landingMessage");
+	%>
 <div class="container-fluid">
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-4">

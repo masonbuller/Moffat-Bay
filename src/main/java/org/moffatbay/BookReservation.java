@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -51,10 +52,10 @@ public class BookReservation extends HttpServlet {
 				// Then send these values to the reservation summary
 				// The SQL insert occurs when the user clicks "book now" on the reservation summary page
 				String email = (String) session.getAttribute("email");
-				String check_in = req.getParameter("checkin");
-				String check_out = req.getParameter("checkout");
-				String guest_amt = req.getParameter("guestamt");
-				String room_type = req.getParameter("room_type");
+				String check_in = (String) req.getParameter("checkin");
+				String check_out = (String) req.getParameter("checkout");
+				String guest_amt = (String) req.getParameter("guestamt");
+				String room_type = (String) req.getParameter("room_type");
 							
 				ResultSet room = SQLStatements.getRoom(room_type);
 				ResultSet customer = SQLStatements.getCustomerID(email);
@@ -63,20 +64,60 @@ public class BookReservation extends HttpServlet {
 					double cost = room.getInt("Cost");
 					int customerID = customer.getInt("CustomerID");
 					
+					ResultSet checkReservation = SQLStatements.checkReservation(customerID);
+					if (checkReservation.next()) {
+						session.setAttribute("errorMessage", "ExistingReservation");
+						resp.sendRedirect("jsp/Reservation/BookReservationError.jsp");
+					}
+					
 					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 					LocalDate start_date = LocalDate.parse(check_in, formatter);
 					LocalDate end_date = LocalDate.parse(check_out, formatter);
 					
 					long days = ChronoUnit.DAYS.between(start_date, end_date);
 					
+					double subtotal = cost * days;
+					subtotal = Math.round(subtotal * 100d) / 100d;
+					
+					double tax = subtotal * .07;
+					tax = Math.round(tax * 100d) / 100d;
+					
+					double total = subtotal + tax;
+					total = Math.round(total * 100d) / 100d;
+					
+					SimpleDateFormat stringForm = new SimpleDateFormat("EEEE, MMMM d, yyyy");
+					
+					String myDate = stringForm.format(start_date) + " - " + stringForm.format(end_date);
+					session.setAttribute("dateFormat", myDate);
+					
+					NumberFormat moneyformatter = NumberFormat.getCurrencyInstance();
+					String subtotalF = moneyformatter.format(subtotal);
+					String taxF = moneyformatter.format(tax);
+					String totalF = moneyformatter.format(total);
+					
+					session.setAttribute("subtotalF", subtotalF);
+					session.setAttribute("taxF", taxF);
+					session.setAttribute("totalF", totalF);
+					
+					session.setAttribute("room_type", room_type);
+					
+					// For SQL Insertion
+					session.setAttribute("check_in", check_in);
+					session.setAttribute("check_out", check_out);
+					session.setAttribute("guests", guest_amt);
+					session.setAttribute("subtotal", subtotal);
+					session.setAttribute("tax", tax);
+					session.setAttribute("total", total);
+					
+					session.setAttribute("roomID", roomID);
+					session.setAttribute("customerID", customerID);
+					
+					resp.sendRedirect("jsp/Reservation/ReservationSummary");
 					
 				} else {
-					session.setAttribute("errorMessage", "Unable to create reservation. Please try again.");
+					session.setAttribute("errorMessage", "BookingError");
 					resp.sendRedirect("jsp/Reservation/BookReservationError.jsp");
 				}
-				
-				resp.sendRedirect("jsp/Reservation/ReservationSummary.jsp");
-				//Session set attributes for the checkin, checkout, guests, cost, and room type
 			} 
 		} catch (IOException e) {
 			System.out.println(e);		 

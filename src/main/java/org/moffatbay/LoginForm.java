@@ -44,6 +44,7 @@ public class LoginForm extends HttpServlet {
 				boolean verification = Password.check(password, passwordData).withBcrypt();
 				if (verification) {
 					session.setAttribute("email", email);
+					session.setAttribute("landingMessage", "loginSuccess");
 					resp.sendRedirect("jsp/Landing/LandingPage.jsp");
 				} else {
 					resp.sendRedirect("jsp/Login/loginFormError.jsp");
