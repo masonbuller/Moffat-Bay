@@ -25,7 +25,7 @@
 
     //Insert data to Room Table
     try {
-    	String sql = "INSERT INTO Room (Bed_type, Cost) VALUES ('Queen', 141.75), ('Double Full Beds', 126), ('Double Queen Beds', 157.5), ('King', 168)";
+    	String sql = "INSERT INTO Room (Bed_type, Cost) VALUES ('1 Queen Bed', 141.75), ('2 Full Beds', 126), ('2 Queen Beds', 157.5), ('1 King Bed', 168)";
     	stmt.executeUpdate(sql);
     } catch (SQLException e) {
     	System.out.println(e);

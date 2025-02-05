@@ -94,6 +94,37 @@ public class SQLStatements implements Serializable{
 		}
 	}
 	
+	public static ResultSet getRoom(String roomType) throws ClassNotFoundException, SQLException {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+	        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/MoffatBay","root","Summertime250!");
+	        PreparedStatement statement = connection.prepareStatement("SELECT * from Room WHERE Bed_type = ?");
+	        statement.setString(1, roomType);
+	        resultSet = statement.executeQuery();
+		} catch (SQLException e){
+			System.out.println(e);
+		} catch (ClassNotFoundException e) {
+			System.out.println(e);
+		}
+        
+        return resultSet;
+	}
+	
+	public static ResultSet getCustomerID(String email) throws ClassNotFoundException, SQLException {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+	        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/MoffatBay","root","Summertime250!");
+	        PreparedStatement statement = connection.prepareStatement("SELECT CustomerID from Registration WHERE email = ?");
+	        statement.setString(1, email);
+	        resultSet = statement.executeQuery();
+		} catch (SQLException e){
+			System.out.println(e);
+		} catch (ClassNotFoundException e) {
+			System.out.println(e);
+		}
+        
+        return resultSet;
+	}
 	
 	
 	public static void closeConnection() throws SQLException {

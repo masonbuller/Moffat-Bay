@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-    	<title>Login Form</title>
+    	<title>Reservation Error Form</title>
     	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="/Moffat-Bay/css/loginForm.css">
@@ -12,8 +12,16 @@
 		<jsp:include page="/jsp/Landing/index.jsp" flush="true"/>
 	</head>
 	<body>
+	<%
+		HttpSession mysession = request.getSession(false);
+		if (session.getAttribute("errorMessage") != null) {
+			mysession.setAttribute("message", "Unable to make reservation.");
+		} else {
+			mysession.setAttribute("message", "Please login before making a reservation.");
+		}
+	%>
 	<div class="alert alert-danger alert-dismissible fade show" role="alert">
-  		<strong>ERROR:</strong> Could not register you. Please try again.
+  		<strong>ERROR:</strong> <%= session.getAttribute("message") %>
   		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 	</div>
 	<div class="container-fluid">
@@ -27,34 +35,19 @@
 						<h1 class="text-center">Moffat Bay</h1>
 					</div>
 					<div class="form-group">
-						<label class="form-label font-weight-bold">Select Start Date</label>
-						<input type="date" class="form-control" name="checkin" required>
+						<label class="form-label font-weight-bold">Email Address</label>
+						<input type="text" class="form-control" name="email" pattern="^(?=.{1,100}$)[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" oninvalid="this.setCustomValidity('Please match the format example@domain.com')" oninput="this.setCustomValidity('')" required>
 					</div>
 					<div class="form-group">
-						<label class="form-label font-weight-bold">Select End Date</label>
-						<input type="date" class="form-control" name="checkout" required>
+						<label class="form-label font-weight-bold">Password</label> 
+						<input type="password" class="form-control" name="password" pattern=".{8,20}" oninvalid="this.setCustomValidity('Please enter 8-20 characters.')" oninput="this.setCustomValidity('')"required>
 					</div>
-					<div class="form-group">
-						<label class="form-label font-weight-bold">Guests</label>
-						<input type="number" class="form-control" name="guestamt" min="1" required>
-					</div>
-					<div class="form-group">
-						<label class="form-label font-weight-bold">Room Type</label>
-							<select name="roomID" id="roomID" required>
-								<option value="One King Size Bed">1 King Bed</option>
-								<option value="One Queen Size Bed">1 Queen Bed</option>
-								<option value="Two Queen Size Beds">2 Queen Beds</option>
-								<option value="Two Queen Size Beds">2 Full Beds</option>
-							</select>
-					</div>
-					
 					<div class="button-group">
-						<button type="submit" class="btn btn-outline-success">Book Room</button>
+						<button type="submit" class="btn btn-outline-success">Sign In</button>
 					</div>
 					<div class="form-footer">
-          				<p> Already have an account? <a href="/Moffat-Bay/jsp/Login/loginForm.jsp">Sign In</a></p>
+          				<p> Don't have an account? <a href="/Moffat-Bay/jsp/UserRegistration/UserRegistration.jsp">Sign Up</a></p>
         			</div>
-				</form>
 				</form>
 			</section>
 		</section>

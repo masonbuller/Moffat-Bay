@@ -39,11 +39,11 @@
 					</div>
 					<div class="form-group">
 						<label class="form-label font-weight-bold">Room Type</label>
-							<select name="roomID" id="roomID" required>
-								<option value="One King Size Bed">1 King Bed</option>
-								<option value="One Queen Size Bed">1 Queen Bed</option>
-								<option value="Two Queen Size Beds">2 Queen Beds</option>
-								<option value="Two Queen Size Beds">2 Full Beds</option>
+							<select name="room_type" id="room_type" required>
+								<option value="1 King Bed">1 King Bed</option>
+								<option value="1 Queen Bed">1 Queen Bed</option>
+								<option value="2 Queen Beds">2 Queen Beds</option>
+								<option value="2 Full Beds">2 Full Beds</option>
 							</select>
 					</div>
 					
