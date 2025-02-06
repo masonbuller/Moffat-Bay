@@ -31,7 +31,7 @@
 		
 		session.removeAttribute("landingMessage");
 	%>
-<div class="container-fluid">
+	<div class="container-fluid">
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-4">
 				<form class="form-container" action="/Moffat-Bay/registration" method="post">
