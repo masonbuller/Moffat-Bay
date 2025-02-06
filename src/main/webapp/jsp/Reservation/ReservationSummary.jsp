@@ -14,7 +14,7 @@
 	<body>
 	<div class="container-fluid">
 		<section class="row justify-content-center">
-			<section class="col-12 col-sm-6 col-md-4">
+			<section class="col-12 col-sm-6 col-md-5">
 				<form class="form-container" action="/Moffat-Bay/reservationSummary" method="post">
 					<div class="text-center">
 						<img src="/Moffat-Bay/images/black_anchor.png" width="150">
@@ -23,7 +23,7 @@
 						<h1 class="text-center">Moffat Bay</h1>
 					</div>
 					<div class="form-group">
-						<h1 class="text-center fs-3">Reservation Summary</h1>
+						<h1 class="text-center fs-2">Reservation Summary</h1>
 					</div>
 					<div class="form-group">
 						<label class="form-label">Dates </label><br>

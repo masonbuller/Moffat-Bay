@@ -26,6 +26,11 @@ form{
 
 .form-group {
 	padding-bottom: 15px;
+	font-size: 18px;
+}
+
+.form-label {
+	font-weight: bold;
 }
 
 .button-group {
@@ -45,8 +50,8 @@ h1 {
 }
 
 .total_label {
-	font-weight: bold;
 	font-size: 20px;
+	font-weight: bold;
 }
 
 #cost {
@@ -65,9 +70,4 @@ h1 {
 .valueTotal {
 	float: right;
 }
-
-.form-label {
-	font-weight: bold;
-}
-
 

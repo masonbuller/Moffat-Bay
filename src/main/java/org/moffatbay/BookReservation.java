@@ -38,6 +38,8 @@ public class BookReservation extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    
+    // NEEDS ADDED: Check if end date is before start date
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			HttpSession session = req.getSession(false);
@@ -75,26 +77,28 @@ public class BookReservation extends HttpServlet {
 					LocalDate end_date = LocalDate.parse(check_out, formatter);
 					
 					long days = ChronoUnit.DAYS.between(start_date, end_date);
-					
+								
 					double subtotal = cost * days;
 					subtotal = Math.round(subtotal * 100d) / 100d;
-					
+								
 					double tax = subtotal * .07;
 					tax = Math.round(tax * 100d) / 100d;
-					
+								
 					double total = subtotal + tax;
-					total = Math.round(total * 100d) / 100d;
-					
-					SimpleDateFormat stringForm = new SimpleDateFormat("EEEE, MMMM d, yyyy");
-					
-					String myDate = stringForm.format(start_date) + " - " + stringForm.format(end_date);
-					session.setAttribute("dateFormat", myDate);
-					
+
+					SimpleDateFormat checkData = new SimpleDateFormat("yyyy-MM-dd");
+					Date checkInDate = checkData.parse(check_in);
+					Date checkOutDate = checkData.parse(check_out);
+								
+					SimpleDateFormat checkDisplay = new SimpleDateFormat("EEEE, MMMM d, yyyy");
+					String myDate = checkDisplay.format(checkInDate) + " - " + checkDisplay.format(checkOutDate);
+								
 					NumberFormat moneyformatter = NumberFormat.getCurrencyInstance();
 					String subtotalF = moneyformatter.format(subtotal);
 					String taxF = moneyformatter.format(tax);
 					String totalF = moneyformatter.format(total);
 					
+					session.setAttribute("dateFormat", myDate);
 					session.setAttribute("subtotalF", subtotalF);
 					session.setAttribute("taxF", taxF);
 					session.setAttribute("totalF", totalF);
@@ -112,7 +116,7 @@ public class BookReservation extends HttpServlet {
 					session.setAttribute("roomID", roomID);
 					session.setAttribute("customerID", customerID);
 					
-					resp.sendRedirect("jsp/Reservation/ReservationSummary");
+					resp.sendRedirect("jsp/Reservation/ReservationSummary.jsp");
 					
 				} else {
 					session.setAttribute("errorMessage", "BookingError");
@@ -124,6 +128,9 @@ public class BookReservation extends HttpServlet {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 	}
