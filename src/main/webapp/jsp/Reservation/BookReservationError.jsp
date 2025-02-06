@@ -14,7 +14,7 @@
 	<body>
 	<%
 		HttpSession mysession = request.getSession(false);
-		if (mysession == null) {
+		if (mysession.getAttribute("errorMessage") == null) {
 			mysession.setAttribute("message", "Please login before making a reservation");
 		} else if (session.getAttribute("errorMessage") == "BookingError") {
 			mysession.setAttribute("message", "Unable to make reservation");
@@ -28,7 +28,10 @@
   		<strong>ERROR:</strong> <%= session.getAttribute("message") %>
   		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 	</div>
-	<%= session.removeAttribute("errorMessage") %>
+	<% if (session.getAttribute("errorMessage") != null) {
+			session.removeAttribute("errorMessage");
+	}
+	%>
 	<div class="container-fluid">
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-4">

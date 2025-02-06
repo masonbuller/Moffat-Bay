@@ -78,7 +78,7 @@ public class SQLStatements implements Serializable{
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 	        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/MoffatBay","root","Summertime250!");
-	        PreparedStatement statement = connection.prepareStatement("INSERT INTO Reservation(Check_In, Check_Out, Guest_Amt, Subtotal, Tax, Total, CustomerID, RoomID) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
+	        PreparedStatement statement = connection.prepareStatement("INSERT INTO Reservation(Check_In, Check_Out, Guest_Amt, Subtotal, Tax, Total_Cost, CustomerID, RoomID) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
 	        statement.setString(1, check_in);
 	        statement.setString(2, check_out);
 	        statement.setInt(3, guest_amt);
