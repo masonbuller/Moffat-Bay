@@ -13,7 +13,7 @@
 	</head>
 	<body>
 	<div class="alert alert-danger alert-dismissible fade show" role="alert">
-  		<strong>ERROR:</strong>Email or password is incorrect. Please try again.
+  		<strong>ERROR:</strong> Email or password is incorrect. Please try again.
   		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 	</div>
 	<div class="container-fluid">

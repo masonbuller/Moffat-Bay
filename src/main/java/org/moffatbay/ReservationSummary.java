@@ -46,6 +46,7 @@ public class ReservationSummary extends HttpServlet {
 				int customerID = (int) session.getAttribute("customerID");
 				ResultSet reservationCheck = SQLStatements.checkReservation(customerID);
 				if (reservationCheck.next()) {
+					System.out.println(customerID);
 					session.setAttribute("errorMessage", "ExistingReservation");
 					resp.sendRedirect("jsp/Reservation/BookReservationError.jsp");
 				} else {
