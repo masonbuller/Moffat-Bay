@@ -20,6 +20,10 @@
 			mysession.setAttribute("message", "Unable to make reservation");
 		} else if (session.getAttribute("errorMessage") == "ExistingReservation") {
 			mysession.setAttribute("message", "Existing reservation. Please call customer support for assistance with making multiple reservations");
+		} else if (session.getAttribute("errorMessage") == "NegativeDays") {
+			mysession.setAttribute("message", "End date must be at least one day after the start date.");
+		} else if (session.getAttribute("errorMessage") == "DateBefore") {
+			mysession.setAttribute("message", "Date range cannot start or end before the current date");
 		} else {
 			mysession.setAttribute("message", "Debugging check code");
 		}

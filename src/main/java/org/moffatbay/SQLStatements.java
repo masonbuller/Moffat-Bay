@@ -14,8 +14,9 @@ public class SQLStatements implements Serializable{
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/MoffatBay","root","Summertime250!");
-			PreparedStatement statement = connection.prepareStatement("SELECT CustomerID from Reservation WHERE customerID = ?");
+			PreparedStatement statement = connection.prepareStatement("SELECT CustomerID from Reservation WHERE CustomerID = ?");
 			statement.setInt(1, customerID);
+			resultSet = statement.executeQuery();
 		} catch (SQLException e){
 			System.out.println(e);
 		} catch (ClassNotFoundException e) {

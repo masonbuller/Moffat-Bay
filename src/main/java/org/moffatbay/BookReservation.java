@@ -66,57 +66,58 @@ public class BookReservation extends HttpServlet {
 					double cost = room.getInt("Cost");
 					int customerID = customer.getInt("CustomerID");
 					
-					ResultSet checkReservation = SQLStatements.checkReservation(customerID);
-					if (checkReservation.next()) {
-						session.setAttribute("errorMessage", "ExistingReservation");
-						resp.sendRedirect("jsp/Reservation/BookReservationError.jsp");
-					}
-					
 					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 					LocalDate start_date = LocalDate.parse(check_in, formatter);
 					LocalDate end_date = LocalDate.parse(check_out, formatter);
 					
 					long days = ChronoUnit.DAYS.between(start_date, end_date);
-								
-					double subtotal = cost * days;
-					subtotal = Math.round(subtotal * 100d) / 100d;
-								
-					double tax = subtotal * .07;
-					tax = Math.round(tax * 100d) / 100d;
-								
-					double total = subtotal + tax;
+					
+					if (days <= 0) {
+						session.setAttribute("errorMessage", "NegativeDays");
+						resp.sendRedirect("jsp/Reservation/BookReservationError.jsp");
+					} else if (start_date.isBefore(LocalDate.now())) {
+						session.setAttribute("errorMessage", "DateBefore");
+						resp.sendRedirect("jsp/Reservation/BookReservationError.jsp");
+					} else {
+						double subtotal = cost * days;
+						subtotal = Math.round(subtotal * 100d) / 100d;
+									
+						double tax = subtotal * .07;
+						tax = Math.round(tax * 100d) / 100d;
+									
+						double total = subtotal + tax;
 
-					SimpleDateFormat checkData = new SimpleDateFormat("yyyy-MM-dd");
-					Date checkInDate = checkData.parse(check_in);
-					Date checkOutDate = checkData.parse(check_out);
-								
-					SimpleDateFormat checkDisplay = new SimpleDateFormat("EEEE, MMMM d, yyyy");
-					String myDate = checkDisplay.format(checkInDate) + " - " + checkDisplay.format(checkOutDate);
-								
-					NumberFormat moneyformatter = NumberFormat.getCurrencyInstance();
-					String subtotalF = moneyformatter.format(subtotal);
-					String taxF = moneyformatter.format(tax);
-					String totalF = moneyformatter.format(total);
-					
-					session.setAttribute("dateFormat", myDate);
-					session.setAttribute("subtotalF", subtotalF);
-					session.setAttribute("taxF", taxF);
-					session.setAttribute("totalF", totalF);
-					
-					session.setAttribute("room_type", room_type);
-					
-					// For SQL Insertion
-					session.setAttribute("check_in", check_in);
-					session.setAttribute("check_out", check_out);
-					session.setAttribute("guests", guest_amt);
-					session.setAttribute("subtotal", subtotal);
-					session.setAttribute("tax", tax);
-					session.setAttribute("total", total);
-					
-					session.setAttribute("roomID", roomID);
-					session.setAttribute("customerID", customerID);
-					
-					resp.sendRedirect("jsp/Reservation/ReservationSummary.jsp");
+						SimpleDateFormat checkData = new SimpleDateFormat("yyyy-MM-dd");
+						Date checkInDate = checkData.parse(check_in);
+						Date checkOutDate = checkData.parse(check_out);
+									
+						SimpleDateFormat checkDisplay = new SimpleDateFormat("EEEE, MMMM d, yyyy");
+						String myDate = checkDisplay.format(checkInDate) + " - " + checkDisplay.format(checkOutDate);
+									
+						NumberFormat moneyformatter = NumberFormat.getCurrencyInstance();
+						String subtotalF = moneyformatter.format(subtotal);
+						String taxF = moneyformatter.format(tax);
+						String totalF = moneyformatter.format(total);
+						
+						session.setAttribute("dateFormat", myDate);
+						session.setAttribute("subtotalF", subtotalF);
+						session.setAttribute("taxF", taxF);
+						session.setAttribute("totalF", totalF);
+						
+						session.setAttribute("room_type", room_type);
+						
+						// For SQL Insertion
+						session.setAttribute("check_in", check_in);
+						session.setAttribute("check_out", check_out);
+						session.setAttribute("guests", guest_amt);
+						session.setAttribute("subtotal", subtotal);
+						session.setAttribute("tax", tax);
+						session.setAttribute("total", total);
+						
+						session.setAttribute("roomID", roomID);
+						session.setAttribute("customerID", customerID);
+						
+					}
 					
 				} else {
 					session.setAttribute("errorMessage", "BookingError");
