@@ -16,10 +16,12 @@
 		HttpSession mysession = request.getSession(false);
 		if (mysession.getAttribute("errorMessage") == null) {
 			mysession.setAttribute("message", "Please login before making a reservation");
-		} else if (session.getAttribute("errorMessage") == "BookingError") {
+		} else if (mysession.getAttribute("errorMessage") == "BookingError") {
 			mysession.setAttribute("message", "Unable to make reservation");
-		} else if (session.getAttribute("errorMessage") == "ExistingReservation") {
+		} else if (mysession.getAttribute("errorMessage") == "ExistingReservation") {
 			mysession.setAttribute("message", "Existing reservation. Please call customer support for assistance with making multiple reservations");
+		} else if (mysession.getAttribute("errorMessage") == "NegativeDays") {
+			mysession.setAttribute("message", "Length of stay must be at least one night");
 		} else {
 			mysession.setAttribute("message", "Debugging check code");
 		}
