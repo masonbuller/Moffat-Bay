@@ -75,7 +75,12 @@ public class BookReservation extends HttpServlet {
 					if (days <= 0) {
 						session.setAttribute("errorMessage", "DateError");
 						resp.sendRedirect("jsp/Reservation/BookReservationError.jsp");
-					} else {
+					} else if (start_date.isBefore(LocalDate.now())) {
+						session.setAttribute("errorMessage", "DateError");
+						resp.sendRedirect("jsp/Reservation/BookReservationError.jsp");
+					}
+					
+					else {
 						double subtotal = cost * days;
 						subtotal = Math.round(subtotal * 100d) / 100d;
 									
@@ -122,14 +127,18 @@ public class BookReservation extends HttpServlet {
 				}
 			} 
 		} catch (IOException e) {
-			System.out.println(e);		 
+			System.out.println(e);
+			resp.sendRedirect("jsp/Reservation/BookReservationError.jsp");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
+			resp.sendRedirect("jsp/Reservation/BookReservationError.jsp");
 		} catch (SQLException e) {
 			e.printStackTrace();
+			resp.sendRedirect("jsp/Reservation/BookReservationError.jsp");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			resp.sendRedirect("jsp/Reservation/BookReservationError.jsp");
 		} 
 	}
 
