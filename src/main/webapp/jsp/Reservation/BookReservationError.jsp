@@ -22,7 +22,10 @@
 			mysession.setAttribute("message", "Existing reservation. Please call customer support for assistance with making multiple reservations");
 		} else if (mysession.getAttribute("errorMessage") == "NegativeDays") {
 			mysession.setAttribute("message", "Length of stay must be at least one night");
-		} else {
+		} else if (mysession.getAttribute("errorMessage") == "DateBefore") {
+			mysession.setAttribute("message", "Start or end date cannot be before the current date");
+		}
+		else {
 			mysession.setAttribute("message", "Debugging check code");
 		}
 	%>
