@@ -45,7 +45,7 @@
 					</div>
 					
 					<div class="button-group">
-						<button type="submit" class="btn btn-outline-success">Book Room</button>
+						<button type="submit" class="btn btn-outline-success">View Booking Summary</button>
 					</div>
 					<div class="form-footer">
           				<p> Already have an account? <a href="/Moffat-Bay/jsp/Login/loginForm.jsp">Sign In</a></p>

@@ -73,7 +73,10 @@ public class BookReservation extends HttpServlet {
 					long days = ChronoUnit.DAYS.between(start_date, end_date);
 					
 					if (days <= 0) {
-						session.setAttribute("errorMessage", "DateError");
+						session.setAttribute("errorMessage", "NegativeDays");
+						resp.sendRedirect("jsp/Reservation/BookReservationError.jsp");
+					} else if (start_date.isBefore(LocalDate.now())) {
+						session.setAttribute("errorMessage", "DateBefore");
 						resp.sendRedirect("jsp/Reservation/BookReservationError.jsp");
 					} else {
 						double subtotal = cost * days;
