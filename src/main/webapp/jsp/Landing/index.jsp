@@ -31,7 +31,7 @@
 				<li><a href="#">Amenities</a></li>
 				<li><a href="/Moffat-Bay/jsp/AboutUs/AboutUs.jsp">About Us</a></li>
 				<li><a href="/Moffat-Bay/jsp/Reservation/BookReservation.jsp">Book Reservation</a></li>
-				<li><a href="/Moffat-Bay/jsp/Reservation/ReservationSummary.jsp">Reservation Summary</a></li>
+				<li><a href="/Moffat-Bay/jsp/ReservationLookup/ReservationLookup.jsp">Reservation Summary</a></li>
 				<li><a href="/Moffat-Bay/jsp/UserRegistration/UserRegistration.jsp">User Registration</a></li>
 				<li><a href="/Moffat-Bay/jsp/Login/loginForm.jsp"><%= request.getAttribute("loginStatus") %></a></li>
 			</ul>
