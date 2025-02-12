@@ -2,9 +2,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Navbar</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="/Moffat-Bay/css/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,8 +27,8 @@
 		<nav>
 		<div class="logo">
 			<ul>
-				<img alt="logo" src="/Moffat-Bay/images/black_anchor.png" width="50px" height="50px">
-				<h2>Moffat Bay Lodge</h2>
+				<img alt="logo" src="/Moffat-Bay/images/black_anchor.png" width="30px" height="30px">
+				<p>Moffat Bay Lodge</p>
 	
 				<li><a href="/Moffat-Bay/jsp/Landing/LandingPage.jsp">Home</a></li>
 				<li><a href="#">Amenities</a></li>

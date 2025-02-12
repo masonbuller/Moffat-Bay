@@ -41,6 +41,9 @@
 					<div class="form-group">
 						<h1 class="text-center">Moffat Bay</h1>
 					</div>
+					<div class="text-center">
+						<img src="/Moffat-Bay/images/SalishSalmon.jpg" width="150">
+					</div>
 				</form>
 			</section>
 		</section>
