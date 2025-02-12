@@ -1,4 +1,4 @@
-
+package org.moffatbay;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -17,9 +17,7 @@ import java.util.Date;
 
 import org.moffatbay.SQLStatements;
 
-/**
- * Servlet implementation class ReservationLookup
- */
+
 @WebServlet("/lookup")
 public class ReservationLookup extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -44,16 +42,16 @@ public class ReservationLookup extends HttpServlet {
 			}
 			String reservationID = (String) request.getParameter("reservationID");
 			String email = (String) request.getParameter("email");
-			if (reservationID != null) {
+			if (reservationID != "") {
 				int resID = Integer.parseInt(reservationID);
 				ResultSet reservation = SQLStatements.getFromReservationID(resID);
 				if (reservation.next()) {
-					String check_in = reservation.getString("CheckIn");
-					String check_out = reservation.getString("CheckOut");
-					int guests = reservation.getInt("GuestAmt");
+					String check_in = reservation.getString("Check_In");
+					String check_out = reservation.getString("Check_Out");
+					int guests = reservation.getInt("Guest_Amt");
 					double subtotal = reservation.getDouble("Subtotal");
 					double tax = reservation.getDouble("Tax");
-					double total = reservation.getDouble("Total");
+					double total = reservation.getDouble("Total_Cost");
 					int roomID = reservation.getInt("RoomID");
 					ResultSet roomType = SQLStatements.getRoomType(roomID);
 					if (roomType.next()) {
@@ -74,8 +72,8 @@ public class ReservationLookup extends HttpServlet {
 						session.setAttribute("room", room);
 						session.setAttribute("guests", guests);
 						session.setAttribute("subtotal", subtotalF);
-						session.setAttribute("tax", tax);
-						session.setAttribute("total", total);
+						session.setAttribute("tax", taxF);
+						session.setAttribute("total", totalF);
 						response.sendRedirect("/Moffat-Bay/jsp/ReservationLookup/LookupSummary.jsp");
 					} else {
 						session.setAttribute("errorMessage", "NoReservation");
@@ -85,20 +83,27 @@ public class ReservationLookup extends HttpServlet {
 					session.setAttribute("errorMessage", "NoReservation");
 					response.sendRedirect("/Moffat-Bay/jsp/ReservationLookup/ReservationLookup.jsp");
 				}
-			} else if (email != null) {
+			} else if (email != "") {
 				ResultSet customer = SQLStatements.getCustomerID(email);
 				if (customer.next()) {
 					int customerID = customer.getInt("CustomerID");
+					System.out.println(customerID);
 					ResultSet reservation2 = SQLStatements.checkReservation(customerID);
 					if (reservation2.next()) {
-						
-						String check_in = reservation2.getString("CheckIn");
-						String check_out = reservation2.getString("CheckOut");
-						int guests = reservation2.getInt("GuestAmt");
+						String check_in = reservation2.getString("Check_In");
+						System.out.println(check_in);
+						String check_out = reservation2.getString("Check_Out");
+						System.out.println(check_out);
+						int guests = reservation2.getInt("Guest_Amt");
+						System.out.println(guests);
 						double subtotal = reservation2.getDouble("Subtotal");
+						System.out.println(subtotal);
 						double tax = reservation2.getDouble("Tax");
-						double total = reservation2.getDouble("Total");
+						System.out.println(tax);
+						double total = reservation2.getDouble("Total_Cost");
+						System.out.println(total);
 						int roomID = reservation2.getInt("RoomID");
+						System.out.println(roomID);
 						ResultSet roomType = SQLStatements.getRoomType(roomID);
 						if (roomType.next()) {
 							String room = roomType.getString("Bed_type");
@@ -118,8 +123,8 @@ public class ReservationLookup extends HttpServlet {
 							session.setAttribute("room", room);
 							session.setAttribute("guests", guests);
 							session.setAttribute("subtotal", subtotalF);
-							session.setAttribute("tax", tax);
-							session.setAttribute("total", total);
+							session.setAttribute("tax", taxF);
+							session.setAttribute("total", totalF);
 							
 							response.sendRedirect("/Moffat-Bay/jsp/ReservationLookup/LookupSummary.jsp");
 							
