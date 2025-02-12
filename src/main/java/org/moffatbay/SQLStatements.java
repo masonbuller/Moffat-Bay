@@ -112,6 +112,23 @@ public class SQLStatements implements Serializable{
 		}
 	}
 	
+	public static void contactForm(String name, String email, String phone, String text) throws ClassNotFoundException, SQLException {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+	        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/MoffatBay","root","Summertime250!");
+	        PreparedStatement statement = connection.prepareStatement("INSERT INTO ContactUs(Name, Email, PhoneNumber, FormText) VALUES(?, ?, ?, ?)");
+	        statement.setString(1, name);
+	        statement.setString(2, email);
+	        statement.setString(3, phone);
+	        statement.setString(4, text);
+	        statement.executeUpdate();
+		} catch (SQLException e){
+			System.out.println(e);
+		} catch (ClassNotFoundException e) {
+			System.out.println(e);
+		}
+	}
+	
 	public static ResultSet getRoom(String roomType) throws ClassNotFoundException, SQLException {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");

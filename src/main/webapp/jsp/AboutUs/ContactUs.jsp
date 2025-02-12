@@ -12,10 +12,24 @@
 		<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
+<%
+		if (session.getAttribute("errorMessage") != null) {
+			if (session.getAttribute("errorMessage") == "SystemError") {
+				session.setAttribute("message", "Could not lookup reservation. Please try again.");
+			}
+			%>
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  				<strong>ERROR:</strong> <%= session.getAttribute("message") %>
+  				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+	<%
+			session.removeAttribute("errorMessage");
+		}
+	%>
 <div class="container-fluid">
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-4">
-				<form class="form-container" action="/Moffat-Bay/login" method="post">
+				<form class="form-container" action="/Moffat-Bay/contact" method="post">
 					<div class="text-center">
 						<img src="/Moffat-Bay/images/black_anchor.png" width="150">
 					</div>
