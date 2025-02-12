@@ -12,6 +12,35 @@
 		<jsp:include page="/jsp/Landing/index.jsp" flush="true"/>
 	</head>
 	<body>
+	<%
+		if (session.getAttribute("errorMessage") != null) {
+			if (session.getAttribute("errorMessage") == "ResNotLoggedIn") {
+				session.setAttribute("message", "Please log in before making a reservation.");
+			} else if (session.getAttribute("errorMessage") == "LoginIncorrect") {
+				session.setAttribute("message", "Email or password is incorrect");
+			} else if (session.getAttribute("errorMessage") == "SystemError") {
+				session.setAttribute("message", "Could not log you in. Please try again");
+			}
+			%>
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  				<strong>ERROR:</strong> <%= session.getAttribute("message") %>
+  				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+	<%
+			session.removeAttribute("errorMessage");
+		} else if (session.getAttribute("loginSuccess") != null) {
+			if (session.getAttribute("loginSuccess") == "Success") {
+				session.setAttribute("message", "Successfully registered. Please log in.");
+			}
+	%>
+		<div class="alert alert-success alert-dismissible fade show" role="alert">
+  			<strong>SUCCESS:</strong> <%= session.getAttribute("message") %>
+  			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+	<%
+			session.removeAttribute("successMessage");
+		}
+	%>
 	<div class="container-fluid">
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-4">
@@ -40,5 +69,6 @@
 			</section>
 		</section>
 	</div>
+	<jsp:include page="/jsp/Landing/Footer.jsp" flush="true"/>
 </body>
 </html>

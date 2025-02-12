@@ -39,20 +39,16 @@ public class BookReservation extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
     
-    // NEEDS ADDED: Check if end date is before start date
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			HttpSession session = req.getSession(false);
-			// Check if user is logged in
-			if (session == null || session.getAttribute("email") == null) {
-				// If user not logged in, redirect to login page
-				resp.sendRedirect("jsp/Reservation/BookReservationError.jsp");
+			if (session == null) {
+				session = req.getSession();
+			}
+			if (session.getAttribute("email") == null) {
+				session.setAttribute("errorMessage", "ResNotLoggedIn");
+				resp.sendRedirect("jsp/Login/loginForm.jsp");
 			} else {
-				// If user is logged in, then get the parameters and calculate the total based on the room table and how many nights they are staying and get the customer ID
-				//SELECT Cost, RoomID FROM Room WHERE Bed_type = (req.getParameter('roomID')
-				//SELECT CustomerID FROM Registration WHERE email = (session.getAttribute("email")
-				// Then send these values to the reservation summary
-				// The SQL insert occurs when the user clicks "book now" on the reservation summary page
 				String email = (String) session.getAttribute("email");
 				String check_in = (String) req.getParameter("checkin");
 				String check_out = (String) req.getParameter("checkout");
@@ -71,13 +67,13 @@ public class BookReservation extends HttpServlet {
 					LocalDate end_date = LocalDate.parse(check_out, formatter);
 					
 					long days = ChronoUnit.DAYS.between(start_date, end_date);
-					
+
 					if (days <= 0) {
 						session.setAttribute("errorMessage", "NegativeDays");
-						resp.sendRedirect("jsp/Reservation/BookReservationError.jsp");
+						resp.sendRedirect("jsp/Reservation/BookReservation.jsp");
 					} else if (start_date.isBefore(LocalDate.now())) {
 						session.setAttribute("errorMessage", "DateBefore");
-						resp.sendRedirect("jsp/Reservation/BookReservationError.jsp");
+						resp.sendRedirect("jsp/Reservation/BookReservation.jsp");
 					} else {
 						double subtotal = cost * days;
 						subtotal = Math.round(subtotal * 100d) / 100d;
@@ -98,7 +94,7 @@ public class BookReservation extends HttpServlet {
 						String subtotalF = moneyformatter.format(subtotal);
 						String taxF = moneyformatter.format(tax);
 						String totalF = moneyformatter.format(total);
-						
+
 						session.setAttribute("dateFormat", myDate);
 						session.setAttribute("subtotalF", subtotalF);
 						session.setAttribute("taxF", taxF);
@@ -117,11 +113,12 @@ public class BookReservation extends HttpServlet {
 						session.setAttribute("roomID", roomID);
 						session.setAttribute("customerID", customerID);
 						
+						resp.sendRedirect("jsp/Reservation/ReservationSummary.jsp");
 					}
 					
 				} else {
 					session.setAttribute("errorMessage", "BookingError");
-					resp.sendRedirect("jsp/Reservation/BookReservationError.jsp");
+					resp.sendRedirect("jsp/Reservation/BookReservation.jsp");
 				}
 			} 
 		} catch (IOException e) {

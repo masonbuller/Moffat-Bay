@@ -155,7 +155,7 @@
     }
     
     try {
-    	String sql = "CREATE TABLE ContactUs (TicketID int NOT NULL AUTO_INCREMENT, Email varchar(50) NOT NULL, PhoneNumber varchar(12) NOT NULL, FormText varchar(200) NOT NULL, PRIMARY KEY(TicketID))";
+    	String sql = "CREATE TABLE ContactUs (TicketID int NOT NULL AUTO_INCREMENT, Name varchar(50) NOT NULL, Email varchar(50) NOT NULL, PhoneNumber varchar(12) NOT NULL, FormText varchar(200) NOT NULL, PRIMARY KEY(TicketID))";
     	stmt.executeUpdate(sql);
     } catch (SQLException e) {
     	System.out.println("Create contact table failed");

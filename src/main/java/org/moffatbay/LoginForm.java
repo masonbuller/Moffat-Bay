@@ -31,14 +31,17 @@ public class LoginForm extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		HttpSession session = req.getSession();
+		HttpSession session = req.getSession(false);
+		if (session == null) {
+			session = req.getSession();
+		}
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");
 		try {
 			ResultSet rs = SQLStatements.checkLogin(email);
 			if (!rs.next()) {
-				resp.sendRedirect("jsp/Login/loginFormError.jsp");
+				session.setAttribute("errorMessage", "LoginIncorrect");
+				resp.sendRedirect("jsp/Login/loginForm.jsp");
 			} else {
 				String passwordData = rs.getString("password");
 				boolean verification = Password.check(password, passwordData).withBcrypt();
@@ -47,13 +50,18 @@ public class LoginForm extends HttpServlet {
 					session.setAttribute("landingMessage", "loginSuccess");
 					resp.sendRedirect("jsp/Landing/LandingPage.jsp");
 				} else {
-					resp.sendRedirect("jsp/Login/loginFormError.jsp");
+					session.setAttribute("errorMessage", "LoginIncorrect");
+					resp.sendRedirect("jsp/Login/loginForm.jsp");
 				}
 			} 
 		} catch (SQLException e) {
 			System.out.println(e);
+			session.setAttribute("errorMessage", "SystemError");
+			resp.sendRedirect("jsp/Login/loginForm.jsp");
 		} catch (ClassNotFoundException e) {
 			System.out.println(e);
+			session.setAttribute("errorMessage", "SystemError");
+			resp.sendRedirect("jsp/Login/loginForm.jsp");
 		}	
 	}
 

@@ -15,13 +15,16 @@
 </head>
 <body>
 <%
-		HttpSession mysession = request.getSession(false);
 		if (session.getAttribute("landingMessage") != null) {
 			if (session.getAttribute("landingMessage") == "loginSuccess") {
-				mysession.setAttribute("message", "Successfully logged in");
+				session.setAttribute("message", "Successfully logged in");
 			} else if (session.getAttribute("landingMessage") == "bookingSuccess") {
-				mysession.setAttribute("message", "Reservation booked successfully");
-			} %>
+				session.setAttribute("message", "Reservation booked successfully");
+			} else if (session.getAttribute("landingMessage") == "contactSuccess") {
+				session.setAttribute("message", "Contact request sent successfully. Someone will be in touch with you shortly");
+			}
+			
+			%>
 			<div class="alert alert-success alert-dismissible fade show" role="alert">
   				<strong>Success!</strong> <%= session.getAttribute("message") %>
   				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -41,14 +44,10 @@
 					<div class="form-group">
 						<h1 class="text-center">Moffat Bay</h1>
 					</div>
-					<div class="text-center">
-						<img src="/Moffat-Bay/images/SalishSalmon.jpg" width="150">
-					</div>
 				</form>
 			</section>
 		</section>
 	</div>
-
-
+	<jsp:include page="Footer.jsp" flush="true"/>
 </body>
 </html>
