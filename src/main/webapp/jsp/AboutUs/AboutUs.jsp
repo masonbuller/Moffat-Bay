@@ -40,16 +40,17 @@
 						<h2 class="text-center">Contact Us</h2>
 					</div>
 					<div class="form-group">
-						<p class="text-center"><u>Email</u></p>
-						<p class="text-center">mbaylodge@hotmail.com</p>
-					</div>
-					<div class="form-group">
 						<p class="text-center"><u>Phone Number</u></p>
 						<p class="text-center">555-234-9898</p>
 					</div>
 					<div class="form-group">
 						<p class="text-center"><u>Facebook</u></p>
 						<p class="text-center">Moffat Lodge Group</p>
+					</div>
+					<div class="form-group">
+						<p class="text-center"><u>Email</u></p>
+						<a href="/Moffat-Bay/jsp/AboutUs/ContactUs.jsp"/a>
+						<p class="text-center">mbaylodge@hotmail.com</p>
 					</div>
 		</section>
 	</div>
