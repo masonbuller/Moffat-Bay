@@ -12,20 +12,6 @@
 		<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-<%
-		if (session.getAttribute("errorMessage") != null) {
-			if (session.getAttribute("errorMessage") == "SystemError") {
-				session.setAttribute("message", "Could not lookup reservation. Please try again.");
-			}
-			%>
-			<div class="alert alert-danger alert-dismissible fade show" role="alert">
-  				<strong>ERROR:</strong> <%= session.getAttribute("message") %>
-  				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-			</div>
-	<%
-			session.removeAttribute("errorMessage");
-		}
-	%>
 <div class="container-fluid">
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-4">
@@ -39,7 +25,7 @@
 					<p>Please send us an email with any questions that you may have.</p>
 					<div class="form-group">
 						<label class="form-label font-weight-bold">Full Name</label> 
-						<input type="text" class="form-control" name="fullName" id="fullName" required>
+						<input type="text" class="form-control" name="fullname" id="fullname" required>
 					</div>
 					<div class="form-group">
 						<label class="form-label font-weight-bold">Email Address</label>
@@ -47,11 +33,11 @@
 					</div>
 					<div class="form-group">
 						<label class="form-label font-weight-bold">Phone Number</label> 
-						<input type="tel" class="form-control" name="phone" id="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+						<input type="tel" class="form-control" name="phone" id="phone" pattern="^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$" required>
 					</div>
 					<div class="form-group">
 						<label class="form-label font-weight-bold">Message</label> 
-						<input type="textarea" class="form-control" name="message" id="message" rows="5" columns="50" required>
+						<textarea class="form-control" id="message" rows="3" required></textarea>
 					</div>
 					<div class="button-group">
 						<button type="submit" class="btn btn-outline-success">Submit</button>
@@ -60,5 +46,6 @@
 			</section>
 		</section>
 	</div>
+	<jsp:include page="/jsp/Landing/Footer.jsp" flush="true"/>
 </body>
 </html>

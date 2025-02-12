@@ -41,7 +41,7 @@ public class Contact extends HttpServlet {
 			SQLStatements.contactForm(name, email, phone, message);
 			
 			session.setAttribute("landingMessage", "contactSuccess");
-			response.sendRedirect("/Moffat-Bay/Landing/LandingPage.jsp");
+			response.sendRedirect("/Moffat-Bay/jsp/Landing/LandingPage.jsp");
 			
 		} catch (SQLException e) {
 			System.out.println(e);	

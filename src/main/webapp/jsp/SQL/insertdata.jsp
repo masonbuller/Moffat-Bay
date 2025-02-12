@@ -84,19 +84,19 @@
     
     //Insert data into ContactUs table
     try {
-    	String sql = "INSERT INTO ContactUs(Email, PhoneNumber, FormText) VALUES ('evensteven@hotmail.com', '555-032-1234', 'Are there scenic views?')";
+    	String sql = "INSERT INTO ContactUs(Name, Email, PhoneNumber, FormText) VALUES ('Josh Evansten', 'evensteven@hotmail.com', '555-032-1234', 'Are there scenic views?')";
     	stmt.executeUpdate(sql);
     } catch (SQLException e) {
     	System.out.println(e);
     }
     try {
-    	String sql = "INSERT INTO ContactUs(Email, PhoneNumber, FormText) VALUES ('hellokitty@gmail.com', '555-230-9999', 'Is there a playgroung?')";
+    	String sql = "INSERT INTO ContactUs(Name, Email, PhoneNumber, FormText) VALUES ('Jess Walter', 'hellokitty@gmail.com', '555-230-9999', 'Is there a playgroung?')";
     	stmt.executeUpdate(sql);
     } catch (SQLException e) {
     	System.out.println(e);
     }
     try {
-    	String sql = "INSERT INTO ContactUs(Email, PhoneNumber, FormText) VALUES ('disneyfun@aol.com', '555-320-8585', 'Do you have a reception hall for a wedding?')";
+    	String sql = "INSERT INTO ContactUs(Name, Email, PhoneNumber, FormText) VALUES ('Kimmy', 'disneyfun@aol.com', '555-320-8585', 'Do you have a reception hall for a wedding?')";
     	stmt.executeUpdate(sql);
     } catch (SQLException e) {
     	System.out.println(e);

@@ -5,6 +5,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -29,6 +31,10 @@ public class UserRegistration extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session = req.getSession(false);
+		if (session == null) {
+			session = req.getSession();
+		}
 		String email = req.getParameter("email");
 		try {
 			ResultSet rs = SQLStatements.checkLogin(email);
@@ -43,13 +49,17 @@ public class UserRegistration extends HttpServlet {
 				String hashed = hash.getResult();
 				SQLStatements.registerLogin(email, hashed);
 				SQLStatements.registerUser(firstName, lastName, phone, email, hashed);
-				resp.sendRedirect("jsp/Login/RegisterSuccessLogin.jsp");
+				session.setAttribute("loginSuccess", "Success");
+				resp.sendRedirect("jsp/Login/loginForm.jsp");
 			} 
 		} catch (SQLException e) {
 			System.out.println(e);
-			resp.sendRedirect("jsp/UserRegistration/UserRegistrationError.jsp");
+			session.setAttribute("errorMessage", "SystemError");
+			resp.sendRedirect("jsp/UserRegistration/UserRegistration.jsp");
 		} catch (ClassNotFoundException e) {
 			System.out.println(e);
+			session.setAttribute("errorMessage", "SystemError");
+			resp.sendRedirect("jsp/UserRegistration/UserRegistration.jsp");
 		}
 	}
 

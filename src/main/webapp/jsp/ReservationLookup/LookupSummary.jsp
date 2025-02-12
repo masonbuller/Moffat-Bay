@@ -58,5 +58,6 @@
 			</section>
 		</section>
 	</div>
+	<jsp:include page="/jsp/Landing/Footer.jsp" flush="true"/>
 </body>
 </html>

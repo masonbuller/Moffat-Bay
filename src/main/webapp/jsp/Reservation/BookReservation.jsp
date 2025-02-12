@@ -12,6 +12,28 @@
 		<jsp:include page="/jsp/Landing/index.jsp" flush="true"/>
 </head>
 <body>
+<%
+		if (session.getAttribute("errorMessage") != null) {
+			if (session.getAttribute("errorMessage") == "BookingError") {
+				session.setAttribute("message", "Unable to make reservation");
+			} else if (session.getAttribute("errorMessage") == "ExistingReservation") {
+				session.setAttribute("message", "Existing reservation. Please call customer support for assistance with making multiple reservations");
+			} else if (session.getAttribute("errorMessage") == "NegativeDays") {
+				session.setAttribute("message", "End date must be at least one day after the start date.");
+			} else if (session.getAttribute("errorMessage") == "DateBefore") {
+				session.setAttribute("message", "Date range cannot start or end before the current date");
+			} else {
+				session.setAttribute("message", "Debugging check code");
+			} 
+			%>
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  				<strong>ERROR:</strong> <%= session.getAttribute("message") %>
+  				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+	<%
+			session.removeAttribute("errorMessage");
+		}
+	%>
 	<div class="container-fluid">
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-4">
@@ -48,11 +70,12 @@
 						<button type="submit" class="btn btn-outline-success">View Booking Summary</button>
 					</div>
 					<div class="form-footer">
-          				<p> Already have an account? <a href="/Moffat-Bay/jsp/Login/loginForm.jsp">Sign In</a></p>
+          				<p> Already have a reservation? <a href="/Moffat-Bay/jsp/ReservationLookup/ReservationLookup.jsp">Look Up Here</a></p>
         			</div>
 				</form>
 			</section>
 		</section>
 	</div>
+	<jsp:include page="/jsp/Landing/Footer.jsp" flush="true"/>
 </body>
 </html>
