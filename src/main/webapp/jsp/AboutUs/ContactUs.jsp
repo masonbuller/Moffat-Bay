@@ -12,7 +12,51 @@
 		<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="container-fluid">
+	<%
+		HttpSession mysession = request.getSession(false);
+		if (mysession == null || mysession.getAttribute("email") == null) {
+			request.setAttribute("loginStatus", "Login");
+		} else {
+			request.setAttribute("loginStatus", "Logged In");
+		}
+	%>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  		<div class="container-fluid">
+    		<a class="navbar-brand px-4" href="/Moffat-Bay/jsp/Landing/LandingPage.jsp">
+    			<img alt="logo" src="/Moffat-Bay/images/black_anchor.png" width="30px" height="30px">
+    			Moffat Bay
+    		</a>
+    		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      			<span class="navbar-toggler-icon"></span>
+    		</button>
+    		<div class="collapse navbar-collapse" id="navbarNav">
+      			<ul class="navbar-nav">
+        			<li class="nav-item px-2">
+          				<a class="nav-link" href="/Moffat-Bay/jsp/Landing/LandingPage.jsp">Home</a>
+        			</li>
+        			<li class="nav-item px-2">
+          				<a class="nav-link" href="#">Attractions</a>
+        			</li>
+        			<li class="nav-item px-2">
+          				<a class="nav-link" href="/Moffat-Bay/jsp/Reservation/BookReservation.jsp">Book Reservation</a>
+        			</li>
+        			<li class="nav-item px-2">
+          				<a class="nav-link" href="/Moffat-Bay/jsp/ReservationLookup/ReservationLookup.jsp">Reservation Lookup</a>
+        			</li>
+        			<li class="nav-item px-2">
+          				<a class="nav-link" href="/Moffat-Bay/jsp/UserRegistration/UserRegistration.jsp">User Registration</a>
+        			</li>
+        			<li class="nav-item px-2">
+          				<a class="nav-link" href="/Moffat-Bay/jsp/AboutUs/AboutUs.jsp">About Us</a>
+        			</li>
+        			<li class="nav-item px-2">
+          				<a class="nav-link" href="/Moffat-Bay/jsp/Login/loginForm.jsp"><%= request.getAttribute("loginStatus") %></a>
+        			</li>
+      			</ul>
+    		</div>
+  		</div>
+	</nav>
+<div class="container-fluid" id="container">
 		<section class="row justify-content-center">
 			<section class="col-12 col-sm-6 col-md-4">
 				<form class="form-container" action="/Moffat-Bay/contact" method="post">
@@ -22,7 +66,7 @@
 					<div class="form-group">
 						<h1 class="text-center">Moffat Bay</h1>
 					</div>
-					<p>Please send us an email with any questions that you may have.</p>
+					<p>Please send us a message with any questions that you may have and someone will get back to you.</p>
 					<div class="form-group">
 						<label class="form-label font-weight-bold">Full Name</label> 
 						<input type="text" class="form-control" name="fullname" id="fullname" required>
