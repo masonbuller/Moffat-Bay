@@ -35,7 +35,7 @@
           				<a class="nav-link" href="/Moffat-Bay/jsp/Landing/LandingPage.jsp">Home</a>
         			</li>
         			<li class="nav-item px-2">
-          				<a class="nav-link" href="#">Attractions</a>
+          				<a class="nav-link" href="/Moffat-Bay/jsp/Attractions/Attractions.jsp">Attractions</a>
         			</li>
         			<li class="nav-item px-2">
           				<a class="nav-link" href="/Moffat-Bay/jsp/Reservation/BookReservation.jsp">Book Reservation</a>
