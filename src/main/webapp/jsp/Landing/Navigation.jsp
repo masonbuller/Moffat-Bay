@@ -23,7 +23,7 @@
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
   		<div class="container-fluid">
     		<a class="navbar-brand px-4" href="/Moffat-Bay/jsp/Landing/LandingPage.jsp">
-    			<img alt="logo" src="/Moffat-Bay/images/black_anchor.png" width="30px" height="30px">
+    			<img alt="logo" src="/Moffat-Bay/images/SalishSalmon.png" width="30px" height="30px">
     			Moffat Bay
     		</a>
     		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

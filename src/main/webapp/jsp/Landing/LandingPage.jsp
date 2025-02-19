@@ -24,7 +24,7 @@
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
   		<div class="container-fluid">
     		<a class="navbar-brand px-4" href="/Moffat-Bay/jsp/Landing/LandingPage.jsp">
-    			<img alt="logo" src="/Moffat-Bay/images/black_anchor.png" width="30px" height="30px">
+    			<img alt="logo" src="/Moffat-Bay/images/SalishSalmon.png" width="30px" height="30px">
     			Moffat Bay
     		</a>
     		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -77,20 +77,46 @@
 		
 		session.removeAttribute("landingMessage");
 	%>
-	<div class="container-fluid" id="container">
+	<div class="container-fluid" id="container1">
 		<section class="row justify-content-center">
-			<section class="col-12 col-sm-6 col-md-4">
-				<form class="form-container" action="/Moffat-Bay/registration" method="post">
-					<div class="text-center">
-						<img src="/Moffat-Bay/images/black_anchor.png" width="150">
+			<section class="col-12 col-sm-6 col-md-8">
+				<section id="group">
+					<div class="form-group" id="logo">
+						<h1>Moffat Bay</h1>
 					</div>
-					<div class="form-group">
-						<h1 class="text-center">Moffat Bay</h1>
+					<div class="form-group" id="description">
+						<p>Welcome to Moffat Bay, where we have endless options. Discover more when you book a room at Moffat Bay. From canoeing, whale watching, and sailing, there will always be more to explore. Book now to experience everything we have to offer.</p>
 					</div>
-				</form>
+					<div class="button-group">
+						<a href="/Moffat-Bay/jsp/Reservation/BookReservation.jsp"><button type="button" class="btn btn-lg btn-light">BOOK NOW</button></a>
+					</div>
+				</section>
 			</section>
 		</section>
 	</div>
-	<jsp:include page="Footer.jsp" flush="true"/>
+	<div class="container-fluid" id="container2">
+		<section class="row justify-content-center">
+			<section class="col-12" id="inline">
+				<section class="text-center" id="group2">
+					<div class="form-group text-center" id="exploring">
+						<h2 class="exploring">Explore what we have to offer</h2>
+					</div>
+					<div class="form-group" id="sections">
+						<p>Campfires</p>
+						<img alt="logo" src="/Moffat-Bay/images/Campfire.jpg" height="400px">
+					</div>
+					<div class="form-group" id="sections">
+						<p>Main Lodge</p>
+						<img alt="logo" src="/Moffat-Bay/images/lodge.jpg" height="400px">
+					</div>
+					<div class="form-group" id="sections">
+						<p>Canoeing</p>
+						<img alt="logo" src="/Moffat-Bay/images/canoe_dirt.jpg" height="400px">
+					</div>
+				</section>
+			</section>
+		</section>
+	</div>
+	<jsp:include page="/jsp/Landing/Footer.jsp" flush="true"/>
 </body>
 </html>
