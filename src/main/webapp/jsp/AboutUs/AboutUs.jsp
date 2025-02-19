@@ -23,7 +23,7 @@
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
   		<div class="container-fluid">
     		<a class="navbar-brand px-4" href="/Moffat-Bay/jsp/Landing/LandingPage.jsp">
-    			<img alt="logo" src="/Moffat-Bay/images/black_anchor.png" width="30px" height="30px">
+    			<img alt="logo" src="/Moffat-Bay/images/SalishSalmon.png" width="30px" height="30px">
     			Moffat Bay
     		</a>
     		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,9 +59,9 @@
 	<div class="container-fluid" id="container">
 		<section class="row">
 			<section class="col">
-				<form class="form-container" action="/Moffat-Bay/registration" method="post">
+				<form class="form-container">
 					<div class="text-center">
-						<img src="/Moffat-Bay/images/black_anchor.png" width="150">
+						<img src="/Moffat-Bay/images/SalishSalmon.png" width="150">
 					</div>
 					<div class="form-group">
 						<h1 class="text-center">Moffat Bay</h1>
@@ -78,7 +78,7 @@
 				</form>
 			</section>
 			<section class="col">
-				<form class="form-container" action="/Moffat-Bay/contact" method="post">
+				<form class="form-container" id="contactBox">
 					<div class="form-group">
 						<h2 class="text-center">Contact Us</h2>
 					</div>
@@ -94,10 +94,13 @@
 						<p class="text-center"><u>Email</u></p>
 						<p class="text-center">mbaylodge@hotmail.com</p>
 					</div>
-					<div class="form-group" id="contact">
-						<p class="text-center"><a href="/Moffat-Bay/jsp/AboutUs/ContactUs.jsp">Contact Form</a></p>
+					<div class="form-group">
+						<p class="text-center" id="questions">Questions? Contact Us!</p>
+						<p class="text-center" id="contact"><a href="/Moffat-Bay/jsp/AboutUs/ContactUs.jsp">Contact Form</a></p>
 					</div>
+				</form>
 			</section>
+		</section>
 	</div>
 	<jsp:include page="/jsp/Landing/Footer.jsp" flush="true"/>
 </body>

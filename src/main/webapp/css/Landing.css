@@ -28,31 +28,16 @@ body{
 	color: #505050 !important;
 }
 
-#container {
-	padding-top: 20vh;
-	padding-bottom: 20vh;
+#container1 {
+	margin-top: 20vh;
+	margin-bottom: 20vh;
+	color: white;
 }
 
-form{
-    background: #fff;
-}
-.form-container{
-    border-radius: 20px;
-    padding: 50px;
-}
-
-.form-group {
-	padding-bottom: 15px;
-	font-size: 18px;
-}
-
-.form-label {
-	font-weight: bold;
-}
-
-.button-group {
-	padding-top: 10px;
-	padding-bottom: 5px;
+#container2 {
+	margin-top: 20vh;
+	margin-bottom: 20vh;
+	background-color: white;
 }
 
 h1 {
@@ -61,30 +46,34 @@ h1 {
 	padding-top: 20px;
 }
 
-.btn-outline-success {
-	padding-bottom: 10px;
-	padding-top: 10px;
+.button-group {
+	padding-top: 30px;
+	padding-bottom: 50px;
 }
 
-.total_label {
+#group {
+	padding: 20px 40px 0px 40px;
+}
+
+#group2 {
+	padding: 40px 0px 20px 0px;
+	margin-bottom: 20px;
+	width: 100%;
+}
+
+#sections {
+	display: inline-block;
+	padding-bottom: 5vh;
+	padding-left: 35px;
+	font-size: 26px;
+}
+
+#description {
 	font-size: 20px;
-	font-weight: bold;
 }
 
-#cost {
-	padding-top: 10px;
+.exploring {
+	padding-bottom: 30px;
+	padding-top: 20px;
+	font-size: 40px;
 }
-
-.cancel-button p a {
-	text-decoration: none;
-	color: #808080;
-}
-
-.cancel-button p a:hover {
-	color: #505050;
-}
-
-.valueTotal {
-	float: right;
-}
-
