@@ -74,6 +74,10 @@ public class BookReservation extends HttpServlet {
 					} else if (start_date.isBefore(LocalDate.now())) {
 						session.setAttribute("errorMessage", "DateBefore");
 						resp.sendRedirect("jsp/Reservation/BookReservation.jsp");
+					} else if (start_date.isAfter(LocalDate.of(2028, 1, 1))) {
+						session.setAttribute("errorMessage", "YearAfter");
+						resp.sendRedirect("jsp/Reservation/BookReservation.jsp");
+							
 					} else {
 						double subtotal = cost * days;
 						subtotal = Math.round(subtotal * 100d) / 100d;
