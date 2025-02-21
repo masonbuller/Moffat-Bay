@@ -59,6 +59,8 @@
 		if (session.getAttribute("errorMessage") != null) {
 			if (session.getAttribute("errorMessage") == "SystemError") {
 				session.setAttribute("message", "Could not register you. Please try again");
+			} else if (session.getAttribute("errorMessage") == "ExistingEmail") {
+				session.setAttribute("message", "Email already registered with an account. Please log in.");
 			}
 			%>
 			<div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -93,7 +95,7 @@
 					</div>
 					<div class="form-group">
 						<label class="form-label font-weight-bold">Email Address</label>
-						<input type="text" class="form-control" name="email" pattern="^(?=.{1,100}$)[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" oninvalid="this.setCustomValidity('Please match the format example@domain.com')" oninput="this.setCustomValidity('')" required>
+						<input type="text" class="form-control" name="email" pattern="^(?=.{1,100}$)[a-zA-Z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" oninvalid="this.setCustomValidity('Please match the format example@domain.com')" oninput="this.setCustomValidity('')" required>
 					</div>
 					<div class="form-group">
 						<label class="form-label font-weight-bold">Password</label> 

@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 /**
  * Servlet implementation class Contact
@@ -33,12 +34,17 @@ public class Contact extends HttpServlet {
 			if (session == null) {
 				session = request.getSession();
 			} 
-			String name = (String) request.getAttribute("fullname");
-			String email = (String) request.getAttribute("email");
-			String phone = (String) request.getAttribute("phone");
-			String message = (String) request.getAttribute("message");
+			String fullname = (String) request.getParameter("fullname");
+			String email = (String) request.getParameter("email");
+			String phone = (String) request.getParameter("phone");
+			String message = (String) request.getParameter("message");
 			
-			SQLStatements.contactForm(name, email, phone, message);
+			System.out.println(fullname);
+			System.out.println(email);
+			System.out.println(phone);
+			System.out.println(message);
+			
+			SQLStatements.contactForm(fullname, email, phone, message);
 			
 			session.setAttribute("landingMessage", "contactSuccess");
 			response.sendRedirect("/Moffat-Bay/jsp/Landing/LandingPage.jsp");

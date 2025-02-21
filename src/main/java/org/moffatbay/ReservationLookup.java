@@ -91,19 +91,12 @@ public class ReservationLookup extends HttpServlet {
 					ResultSet reservation2 = SQLStatements.checkReservation(customerID);
 					if (reservation2.next()) {
 						String check_in = reservation2.getString("Check_In");
-						System.out.println(check_in);
 						String check_out = reservation2.getString("Check_Out");
-						System.out.println(check_out);
 						int guests = reservation2.getInt("Guest_Amt");
-						System.out.println(guests);
 						double subtotal = reservation2.getDouble("Subtotal");
-						System.out.println(subtotal);
 						double tax = reservation2.getDouble("Tax");
-						System.out.println(tax);
 						double total = reservation2.getDouble("Total_Cost");
-						System.out.println(total);
 						int roomID = reservation2.getInt("RoomID");
-						System.out.println(roomID);
 						ResultSet roomType = SQLStatements.getRoomType(roomID);
 						if (roomType.next()) {
 							String room = roomType.getString("Bed_type");
