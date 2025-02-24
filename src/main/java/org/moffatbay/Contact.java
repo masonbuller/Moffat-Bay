@@ -39,11 +39,6 @@ public class Contact extends HttpServlet {
 			String phone = (String) request.getParameter("phone");
 			String message = (String) request.getParameter("message");
 			
-			System.out.println(fullname);
-			System.out.println(email);
-			System.out.println(phone);
-			System.out.println(message);
-			
 			SQLStatements.contactForm(fullname, email, phone, message);
 			
 			session.setAttribute("landingMessage", "contactSuccess");

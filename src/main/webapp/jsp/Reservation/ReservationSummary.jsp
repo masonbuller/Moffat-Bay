@@ -69,6 +69,10 @@
 						<h1 class="text-center fs-2">Reservation Summary</h1>
 					</div>
 					<div class="form-group">
+						<label class="form-label">Reservation ID</label><br>
+						<label class="value"><%= session.getAttribute("resID") %></label>
+					</div>
+					<div class="form-group">
 						<label class="form-label">Dates </label><br>
 						<label class="value"><%= session.getAttribute("dateFormat") %></label>
 					</div>
