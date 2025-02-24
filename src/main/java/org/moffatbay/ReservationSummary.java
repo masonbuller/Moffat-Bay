@@ -67,11 +67,11 @@ public class ReservationSummary extends HttpServlet {
 		} catch (IOException e) {
 			System.out.println(e);
 			session.setAttribute("errorMessage", "BookingError");
-			resp.sendRedirect("jsp/Reservation/BookReservationError.jsp");
+			resp.sendRedirect("jsp/Reservation/BookReservation.jsp");
 		} catch (Exception e){
 			System.out.println(e);
 			session.setAttribute("errorMessage", "BookingError");
-			resp.sendRedirect("jsp/Reservation/BookReservationError.jsp");
+			resp.sendRedirect("jsp/Reservation/BookReservation.jsp");
 		}
 	}
 

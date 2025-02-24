@@ -117,7 +117,14 @@ public class BookReservation extends HttpServlet {
 						session.setAttribute("roomID", roomID);
 						session.setAttribute("customerID", customerID);
 						
-						resp.sendRedirect("jsp/Reservation/ReservationSummary.jsp");
+						int id = SQLStatements.getResID();
+						if (id != -1) {
+							session.setAttribute("resID", id);
+							resp.sendRedirect("jsp/Reservation/ReservationSummary.jsp");
+						} else {
+							session.setAttribute("errorMessage", "BookingError");
+							resp.sendRedirect("jsp/Reservation/BookReservation.jsp");
+						}
 					}
 					
 				} else {

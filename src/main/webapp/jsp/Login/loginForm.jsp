@@ -81,7 +81,7 @@
   			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 		</div>
 	<%
-			session.removeAttribute("successMessage");
+			session.removeAttribute("loginMessage");
 		}
 	%>
 	<div class="container-fluid" id="container">
@@ -96,7 +96,7 @@
 					</div>
 					<div class="form-group">
 						<label class="form-label font-weight-bold">Email Address</label>
-						<input type="text" class="form-control" name="email" pattern="^(?=.{1,100}$)[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" oninvalid="this.setCustomValidity('Please match the format example@domain.com')" oninput="this.setCustomValidity('')" required>
+						<input type="text" class="form-control" name="email" pattern="^(?=.{1,100}$)[a-zA-Z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" oninvalid="this.setCustomValidity('Please match the format example@domain.com')" oninput="this.setCustomValidity('')" required>
 					</div>
 					<div class="form-group">
 						<label class="form-label font-weight-bold">Password</label> 
