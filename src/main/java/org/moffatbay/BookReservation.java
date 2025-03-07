@@ -74,6 +74,10 @@ public class BookReservation extends HttpServlet {
 					} else if (start_date.isBefore(LocalDate.now())) {
 						session.setAttribute("errorMessage", "DateBefore");
 						resp.sendRedirect("jsp/Reservation/BookReservation.jsp");
+					} else if (start_date.isAfter(LocalDate.of(2028, 1, 1))) {
+						session.setAttribute("errorMessage", "YearAfter");
+						resp.sendRedirect("jsp/Reservation/BookReservation.jsp");
+							
 					} else {
 						double subtotal = cost * days;
 						subtotal = Math.round(subtotal * 100d) / 100d;
@@ -113,7 +117,14 @@ public class BookReservation extends HttpServlet {
 						session.setAttribute("roomID", roomID);
 						session.setAttribute("customerID", customerID);
 						
-						resp.sendRedirect("jsp/Reservation/ReservationSummary.jsp");
+						int id = SQLStatements.getResID();
+						if (id != -1) {
+							session.setAttribute("resID", id);
+							resp.sendRedirect("jsp/Reservation/ReservationSummary.jsp");
+						} else {
+							session.setAttribute("errorMessage", "BookingError");
+							resp.sendRedirect("jsp/Reservation/BookReservation.jsp");
+						}
 					}
 					
 				} else {

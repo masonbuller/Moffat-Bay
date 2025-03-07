@@ -87,7 +87,7 @@
 					<div class="form-group" id="description">
 						<p>Welcome to Moffat Bay, where we have endless options. Discover more when you book a room at Moffat Bay. From canoeing, whale watching, and sailing, there will always be more to explore. Book now to experience everything we have to offer.</p>
 					</div>
-					<div class="button-group">
+					<div class="button-group" id="button1">
 						<a href="/Moffat-Bay/jsp/Reservation/BookReservation.jsp"><button type="button" class="btn btn-lg btn-light">BOOK NOW</button></a>
 					</div>
 				</section>
@@ -112,6 +112,20 @@
 					<div class="form-group" id="sections">
 						<p>Canoeing</p>
 						<img alt="logo" src="/Moffat-Bay/images/canoe_dirt.jpg" height="400px">
+					</div>
+				</section>
+			</section>
+		</section>
+	</div>
+	<div class="container-fluid" id="container3">
+		<section class="row justify-content-center">
+			<section class="col-12 col-sm-6 col-md-8">
+				<section id="group3">
+					<div class="form-group" id="review">
+						<p>Where travel meets comfort. Explore endlessly, comfortably.</p>
+					</div>
+					<div class="button-group" id="button2">
+						<a href="/Moffat-Bay/jsp/Attractions/Attractions.jsp"><button type="button" class="btn btn-lg btn-light">Explore More</button></a>
 					</div>
 				</section>
 			</section>

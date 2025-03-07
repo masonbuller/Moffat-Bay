@@ -39,7 +39,8 @@ public class UserRegistration extends HttpServlet {
 		try {
 			ResultSet rs = SQLStatements.checkLogin(email);
 			if (rs.next()) {
-				resp.sendRedirect("jsp/UserRegistration/UserRegistrationError.jsp");
+				session.setAttribute("errorMessage", "ExistingEmail");
+				resp.sendRedirect("jsp/UserRegistration/UserRegistration.jsp");
 			} else {
 				String firstName = req.getParameter("firstname");
 				String lastName = req.getParameter("lastname");

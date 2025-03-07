@@ -46,7 +46,6 @@ public class ReservationSummary extends HttpServlet {
 				int customerID = (int) session.getAttribute("customerID");
 				ResultSet reservationCheck = SQLStatements.checkReservation(customerID);
 				if (reservationCheck.next()) {
-					System.out.println(customerID);
 					session.setAttribute("errorMessage", "ExistingReservation");
 					resp.sendRedirect("jsp/Reservation/BookReservationError.jsp");
 				} else {
@@ -68,11 +67,11 @@ public class ReservationSummary extends HttpServlet {
 		} catch (IOException e) {
 			System.out.println(e);
 			session.setAttribute("errorMessage", "BookingError");
-			resp.sendRedirect("jsp/Reservation/BookReservationError.jsp");
+			resp.sendRedirect("jsp/Reservation/BookReservation.jsp");
 		} catch (Exception e){
 			System.out.println(e);
 			session.setAttribute("errorMessage", "BookingError");
-			resp.sendRedirect("jsp/Reservation/BookReservationError.jsp");
+			resp.sendRedirect("jsp/Reservation/BookReservation.jsp");
 		}
 	}
 

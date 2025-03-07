@@ -145,6 +145,25 @@ public class SQLStatements implements Serializable{
         return resultSet;
 	}
 	
+	public static int getResID() throws ClassNotFoundException, SQLException {
+		int id = -1;
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+	        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/MoffatBay","root","Summertime250!");
+	        PreparedStatement statement = connection.prepareStatement("SELECT MAX(ReservationID) as resID FROM Reservation");
+	        resultSet = statement.executeQuery();
+	        if (resultSet.next()) {
+	        	id = resultSet.getInt("resID");
+	        	id++;
+	        }
+		} catch (SQLException e){
+			System.out.println(e);
+		} catch (ClassNotFoundException e) {
+			System.out.println(e);
+		}
+        return id;
+	}
+	
 	public static ResultSet getRoomType(int roomID) throws ClassNotFoundException, SQLException {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -167,6 +186,22 @@ public class SQLStatements implements Serializable{
 	        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/MoffatBay","root","Summertime250!");
 	        PreparedStatement statement = connection.prepareStatement("SELECT CustomerID from Registration WHERE email = ?");
 	        statement.setString(1, email);
+	        resultSet = statement.executeQuery();
+		} catch (SQLException e){
+			System.out.println(e);
+		} catch (ClassNotFoundException e) {
+			System.out.println(e);
+		}
+        
+        return resultSet;
+	}
+	
+	public static ResultSet findReservationID(int customerID) throws ClassNotFoundException, SQLException {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+	        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/MoffatBay","root","Summertime250!");
+	        PreparedStatement statement = connection.prepareStatement("SELECT ReservationID from Reservation WHERE CustomerID = ?");
+	        statement.setInt(1, customerID);
 	        resultSet = statement.executeQuery();
 		} catch (SQLException e){
 			System.out.println(e);

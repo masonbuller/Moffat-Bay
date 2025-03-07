@@ -65,6 +65,8 @@
 				session.setAttribute("message", "End date must be at least one day after the start date.");
 			} else if (session.getAttribute("errorMessage") == "DateBefore") {
 				session.setAttribute("message", "Date range cannot start or end before the current date");
+			} else if (session.getAttribute("errorMessage") == "YearAfter") {
+				session.setAttribute("message", "Year must be before 2028. Please contact us for details on booking past this date.");
 			} else {
 				session.setAttribute("message", "Debugging check code");
 			} 
@@ -97,7 +99,7 @@
 					</div>
 					<div class="form-group">
 						<label class="form-label font-weight-bold">Guests</label>
-						<input type="number" class="form-control" name="guestamt" min="1" required>
+						<input type="number" class="form-control" name="guestamt" min="1" max="10" required>
 					</div>
 					<div class="form-group">
 						<label class="form-label font-weight-bold">Room Type</label>

@@ -68,6 +68,7 @@ public class ReservationLookup extends HttpServlet {
 						String taxF = moneyformatter.format(tax);
 						String totalF = moneyformatter.format(total);
 						
+						session.setAttribute("resID", reservationID);
 						session.setAttribute("dates", myDate);
 						session.setAttribute("room", room);
 						session.setAttribute("guests", guests);
@@ -87,49 +88,49 @@ public class ReservationLookup extends HttpServlet {
 				ResultSet customer = SQLStatements.getCustomerID(email);
 				if (customer.next()) {
 					int customerID = customer.getInt("CustomerID");
-					System.out.println(customerID);
 					ResultSet reservation2 = SQLStatements.checkReservation(customerID);
 					if (reservation2.next()) {
-						String check_in = reservation2.getString("Check_In");
-						System.out.println(check_in);
-						String check_out = reservation2.getString("Check_Out");
-						System.out.println(check_out);
-						int guests = reservation2.getInt("Guest_Amt");
-						System.out.println(guests);
-						double subtotal = reservation2.getDouble("Subtotal");
-						System.out.println(subtotal);
-						double tax = reservation2.getDouble("Tax");
-						System.out.println(tax);
-						double total = reservation2.getDouble("Total_Cost");
-						System.out.println(total);
-						int roomID = reservation2.getInt("RoomID");
-						System.out.println(roomID);
-						ResultSet roomType = SQLStatements.getRoomType(roomID);
-						if (roomType.next()) {
-							String room = roomType.getString("Bed_type");
-							SimpleDateFormat checkData = new SimpleDateFormat("yyyy-MM-dd");
-							Date checkInDate = checkData.parse(check_in);
-							Date checkOutDate = checkData.parse(check_out);
-										
-							SimpleDateFormat checkDisplay = new SimpleDateFormat("EEEE, MMMM d, yyyy");
-							String myDate = checkDisplay.format(checkInDate) + " - " + checkDisplay.format(checkOutDate);
-										
-							NumberFormat moneyformatter = NumberFormat.getCurrencyInstance();
-							String subtotalF = moneyformatter.format(subtotal);
-							String taxF = moneyformatter.format(tax);
-							String totalF = moneyformatter.format(total);
-							
-							session.setAttribute("dates", myDate);
-							session.setAttribute("room", room);
-							session.setAttribute("guests", guests);
-							session.setAttribute("subtotal", subtotalF);
-							session.setAttribute("tax", taxF);
-							session.setAttribute("total", totalF);
-							
-							response.sendRedirect("/Moffat-Bay/jsp/ReservationLookup/LookupSummary.jsp");
-							
+						ResultSet resID = SQLStatements.findReservationID(customerID);
+						if (resID.next()) {
+							int id = resID.getInt("ReservationID");
+							String check_in = reservation2.getString("Check_In");
+							String check_out = reservation2.getString("Check_Out");
+							int guests = reservation2.getInt("Guest_Amt");
+							double subtotal = reservation2.getDouble("Subtotal");
+							double tax = reservation2.getDouble("Tax");
+							double total = reservation2.getDouble("Total_Cost");
+							int roomID = reservation2.getInt("RoomID");
+							ResultSet roomType = SQLStatements.getRoomType(roomID);
+							if (roomType.next()) {
+								String room = roomType.getString("Bed_type");
+								SimpleDateFormat checkData = new SimpleDateFormat("yyyy-MM-dd");
+								Date checkInDate = checkData.parse(check_in);
+								Date checkOutDate = checkData.parse(check_out);
+											
+								SimpleDateFormat checkDisplay = new SimpleDateFormat("EEEE, MMMM d, yyyy");
+								String myDate = checkDisplay.format(checkInDate) + " - " + checkDisplay.format(checkOutDate);
+											
+								NumberFormat moneyformatter = NumberFormat.getCurrencyInstance();
+								String subtotalF = moneyformatter.format(subtotal);
+								String taxF = moneyformatter.format(tax);
+								String totalF = moneyformatter.format(total);
+								
+								session.setAttribute("resID", id);
+								session.setAttribute("dates", myDate);
+								session.setAttribute("room", room);
+								session.setAttribute("guests", guests);
+								session.setAttribute("subtotal", subtotalF);
+								session.setAttribute("tax", taxF);
+								session.setAttribute("total", totalF);
+								
+								response.sendRedirect("/Moffat-Bay/jsp/ReservationLookup/LookupSummary.jsp");
+								
+							} else {
+								session.setAttribute("errorMessage", "NoReservation");
+								response.sendRedirect("/Moffat-Bay/jsp/ReservationLookup/ReservationLookup.jsp");
+							}
 						} else {
-							session.setAttribute("errorMessage", "NoReservation");
+							session.setAttribute("errorMessage", "SystemError");
 							response.sendRedirect("/Moffat-Bay/jsp/ReservationLookup/ReservationLookup.jsp");
 						}
 					} else {
