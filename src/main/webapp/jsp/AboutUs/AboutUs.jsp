@@ -72,7 +72,7 @@
 					<div class="form-group">
 						<p class="text-center">The Moffat Bay Lodge opened in March of 1977. It is a family owned and operated business. 
 						We enjoy being out in nature. There are so many beautiful sites to see around the lodge. If you are
-						looking for beautiful scenic views than this is the place for you. We have gorgeous mountains, 
+						looking for beautiful scenic views then this is the place for you. We have gorgeous mountains, 
 						beautiful beaches, and amazing trees and rivers.</p>
 					</div>
 				</form>
