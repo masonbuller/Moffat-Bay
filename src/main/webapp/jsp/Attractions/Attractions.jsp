@@ -57,8 +57,8 @@
   		</div>
 	</nav>
 	<div class="container-fluid" id="container">
-		<section class="row">
-			<section class="col-md-4">
+		<section class="row justify-content-center">
+			<section class="col-sm-6" >
 				<form class="form-container" action="/Moffat-Bay/whalewatching" method="post">
 					<div class="form-group">
 						<h1 class="text-center">Whale Watching</h1>
@@ -70,8 +70,7 @@
 						<p>Come watch the whales in the beautiful Griffin Bay.</p>
 					</div>
 				</form>
-			</section>
-			<section class="col-md-4">
+				</br>
 				<form class="form-container" action="/Moffat-Bay/canoeing" method="post">
 					<div class="form-group">
 						<h1 class="text-center">Canoeing</h1>
@@ -83,8 +82,7 @@
 						<p>Canoe around the islands. You will be able to see a lot of great wildlife!</p>
 					</div>
 				</form>
-			</section>
-			<section class="col-md-4">
+				</br>
 				<form class="form-container" action="/Moffat-Bay/beachfun" method="post">
 					<div class="form-group">
 						<h1 class="text-center">Sailing</h1>
@@ -96,15 +94,10 @@
 						<p>Sailing is a great way to relax and soak up the sun.</p>
 					</div>
 				</form>
-			</section>
-		<section class="row">
-			<section class="col-sm-2" text="center">
-				<form class="form-container" action="/Moffat-Bay/contact" method="post">
-					<div class="form-group" id="contact">
-						<p class="text-center"><a href="/Moffat-Bay/jsp/Reservation/BookReservation.jsp">Book a Room</a></p>
+				</br>
+					<div class="button-group">
+						<a href="/Moffat-Bay/jsp/Reservation/BookReservation.jsp"><button type="button" class="btn btn-lg btn-light">BOOK NOW</button></a>
 					</div>
-				</form>
-			</section>
 		</section>
 	</div>
 	<jsp:include page="/jsp/Landing/Footer.jsp" flush="true"/>
